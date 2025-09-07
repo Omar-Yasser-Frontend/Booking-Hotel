@@ -1,0 +1,4 @@
+.env
+/node_modules
+/data/rooms_image_url.json
+/assets

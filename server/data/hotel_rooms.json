@@ -1,0 +1,843 @@
+[
+  {
+    "name": "Cairo Desert Retreat",
+    "description": "A peaceful retreat hotel at the edge of the Cairo desert, offering panoramic views, camel tours, and a unique mix of traditional and modern hospitality. A great escape for those who love quiet nature.",
+    "thumbnail": "desert_thumb.jpg",
+    "images": ["desert1.jpg", "desert2.jpg", "desert3.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 6, "rooms": 3 },
+    "extras": ["Camel Tours", "Traditional Breakfast", "Free WiFi"],
+    "pricePerNight": 140,
+    "location": {
+      "country": "Egypt",
+      "city": "Cairo",
+      "address": "Sakkara Rd, Giza"
+    },
+    "rating": 4.2,
+    "reviewsCount": 140
+  },
+  {
+    "name": "Nile View Palace",
+    "description": "Luxury hotel on the banks of the Nile River in Cairo, offering modern suites, fine dining, and exclusive Nile cruises for guests seeking elegance.",
+    "thumbnail": "nile_thumb.jpg",
+    "images": ["nile1.jpg", "nile2.jpg", "nile3.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 20, "rooms": 10 },
+    "extras": ["Nile Cruise", "Spa Access", "Private Balcony"],
+    "pricePerNight": 300,
+    "location": {
+      "country": "Egypt",
+      "city": "Cairo",
+      "address": "Corniche El Nil, Garden City"
+    },
+    "rating": 4.7,
+    "reviewsCount": 520
+  },
+  {
+    "name": "Downtown Comfort Inn",
+    "description": "A cozy mid-range hotel located in downtown Cairo, providing easy access to museums, cafes, and cultural hotspots. Perfect for budget travelers.",
+    "thumbnail": "downtown_thumb.jpg",
+    "images": ["downtown1.jpg", "downtown2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 8, "rooms": 4 },
+    "extras": ["Airport Shuttle", "Breakfast Buffet", "Free WiFi"],
+    "pricePerNight": 120,
+    "location": {
+      "country": "Egypt",
+      "city": "Cairo",
+      "address": "Tahrir Square, Downtown"
+    },
+    "rating": 4.0,
+    "reviewsCount": 310
+  },
+  {
+    "name": "Pyramid View Lodge",
+    "description": "A boutique hotel with direct views of the Great Pyramids of Giza, offering rooftop dining and guided tours for an unforgettable stay.",
+    "thumbnail": "pyramid_thumb.jpg",
+    "images": ["pyramid1.jpg", "pyramid2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 12, "rooms": 6 },
+    "extras": ["Rooftop Dinner", "Guided Tours", "Airport Pickup"],
+    "pricePerNight": 200,
+    "location": {
+      "country": "Egypt",
+      "city": "Cairo",
+      "address": "Giza Plateau"
+    },
+    "rating": 4.6,
+    "reviewsCount": 450
+  },
+  {
+    "name": "Historic Cairo Inn",
+    "description": "A charming inn located in Islamic Cairo, surrounded by historic mosques and bazaars. Offers an authentic cultural experience.",
+    "thumbnail": "historic_thumb.jpg",
+    "images": ["historic1.jpg", "historic2.jpg"],
+    "isAvailable": false,
+    "capacity": { "guests": 5, "rooms": 2 },
+    "extras": ["Traditional Meals", "Walking Tours"],
+    "pricePerNight": 100,
+    "location": {
+      "country": "Egypt",
+      "city": "Cairo",
+      "address": "El Moez Street, Old Cairo"
+    },
+    "rating": 3.9,
+    "reviewsCount": 85
+  },
+  {
+    "name": "Garden Oasis Hotel",
+    "description": "An affordable hotel surrounded by greenery in Cairo’s suburbs, perfect for families and long-term stays.",
+    "thumbnail": "garden_thumb.jpg",
+    "images": ["garden1.jpg", "garden2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 15, "rooms": 7 },
+    "extras": ["Playground", "Free Parking", "Pool"],
+    "pricePerNight": 160,
+    "location": {
+      "country": "Egypt",
+      "city": "Cairo",
+      "address": "Heliopolis"
+    },
+    "rating": 4.1,
+    "reviewsCount": 230
+  },
+  {
+    "name": "Cairo Grand Suites",
+    "description": "Modern suites in the heart of Cairo with business facilities, high-speed WiFi, and international dining options.",
+    "thumbnail": "grandsuites_thumb.jpg",
+    "images": ["grandsuites1.jpg", "grandsuites2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 18, "rooms": 9 },
+    "extras": ["Conference Hall", "High-Speed WiFi", "Airport Pickup"],
+    "pricePerNight": 220,
+    "location": { "country": "Egypt", "city": "Cairo", "address": "Nasr City" },
+    "rating": 4.4,
+    "reviewsCount": 330
+  },
+  {
+    "name": "Budget Stay Cairo",
+    "description": "Simple and affordable rooms for backpackers and students, located near Cairo University and metro stations.",
+    "thumbnail": "budget_thumb.jpg",
+    "images": ["budget1.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 10, "rooms": 5 },
+    "extras": ["Shared Kitchen", "Laundry Services"],
+    "pricePerNight": 80,
+    "location": { "country": "Egypt", "city": "Cairo", "address": "Dokki" },
+    "rating": 3.7,
+    "reviewsCount": 140
+  },
+  {
+    "name": "Luxury Nile Tower",
+    "description": "High-end luxury hotel with a tower design, rooftop pool, and 360-degree views of Cairo’s skyline and the Nile.",
+    "thumbnail": "tower_thumb.jpg",
+    "images": ["tower1.jpg", "tower2.jpg", "tower3.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 25, "rooms": 12 },
+    "extras": ["Rooftop Pool", "Fine Dining", "Gym"],
+    "pricePerNight": 280,
+    "location": { "country": "Egypt", "city": "Cairo", "address": "Zamalek" },
+    "rating": 4.8,
+    "reviewsCount": 600
+  },
+  {
+    "name": "City Edge Hostel",
+    "description": "A modern hostel for young travelers, with dorms and shared facilities. Popular among solo adventurers.",
+    "thumbnail": "hostel_thumb.jpg",
+    "images": ["hostel1.jpg", "hostel2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 20, "rooms": 8 },
+    "extras": ["Game Room", "Shared Kitchen", "Free WiFi"],
+    "pricePerNight": 60,
+    "location": {
+      "country": "Egypt",
+      "city": "Cairo",
+      "address": "6th of October City"
+    },
+    "rating": 3.8,
+    "reviewsCount": 180
+  },
+
+  {
+    "name": "Sahel White Sands",
+    "description": "A beachfront hotel in Egypt’s North Coast with crystal-clear waters, private cabanas, and a relaxing vibe.",
+    "thumbnail": "sahel_white_thumb.jpg",
+    "images": ["sahel_white1.jpg", "sahel_white2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 12, "rooms": 6 },
+    "extras": ["Private Beach", "Pool", "Water Sports"],
+    "pricePerNight": 250,
+    "location": {
+      "country": "Egypt",
+      "city": "North Coast",
+      "address": "Marassi, North Coast"
+    },
+    "rating": 4.5,
+    "reviewsCount": 410
+  },
+  {
+    "name": "Blue Lagoon Resort",
+    "description": "A family-friendly resort featuring lagoons, aqua park facilities, and all-inclusive dining on the North Coast.",
+    "thumbnail": "lagoon_thumb.jpg",
+    "images": ["lagoon1.jpg", "lagoon2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 20, "rooms": 10 },
+    "extras": ["Aqua Park", "Kids Club", "All Inclusive"],
+    "pricePerNight": 220,
+    "location": {
+      "country": "Egypt",
+      "city": "North Coast",
+      "address": "Hacienda Bay"
+    },
+    "rating": 4.6,
+    "reviewsCount": 520
+  },
+  {
+    "name": "Mediterranean Breeze Hotel",
+    "description": "A stylish boutique hotel overlooking the Mediterranean Sea, offering fresh seafood and yoga retreats.",
+    "thumbnail": "med_breeze_thumb.jpg",
+    "images": ["med_breeze1.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 8, "rooms": 4 },
+    "extras": ["Yoga Retreats", "Seafood Restaurant"],
+    "pricePerNight": 180,
+    "location": {
+      "country": "Egypt",
+      "city": "North Coast",
+      "address": "Sidi Abdelrahman"
+    },
+    "rating": 4.3,
+    "reviewsCount": 290
+  },
+  {
+    "name": "Palm Bay Retreat",
+    "description": "An intimate getaway resort with tropical-inspired gardens, infinity pools, and beachfront lounges.",
+    "thumbnail": "palm_thumb.jpg",
+    "images": ["palm1.jpg", "palm2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 10, "rooms": 5 },
+    "extras": ["Infinity Pool", "Beach Lounges", "Spa"],
+    "pricePerNight": 230,
+    "location": {
+      "country": "Egypt",
+      "city": "North Coast",
+      "address": "Marassi, North Coast"
+    },
+    "rating": 4.4,
+    "reviewsCount": 340
+  },
+  {
+    "name": "Sunset Paradise",
+    "description": "A romantic resort for couples with sunset views, candle-lit dinners, and honeymoon packages.",
+    "thumbnail": "sunset_thumb.jpg",
+    "images": ["sunset1.jpg"],
+    "isAvailable": false,
+    "capacity": { "guests": 6, "rooms": 3 },
+    "extras": ["Honeymoon Packages", "Private Dinner"],
+    "pricePerNight": 260,
+    "location": {
+      "country": "Egypt",
+      "city": "North Coast",
+      "address": "Amwaj, North Coast"
+    },
+    "rating": 4.7,
+    "reviewsCount": 270
+  },
+  {
+    "name": "Coral Reef Resort",
+    "description": "A lively beach resort known for diving experiences, vibrant nightlife, and poolside entertainment.",
+    "thumbnail": "coral_thumb.jpg",
+    "images": ["coral1.jpg", "coral2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 18, "rooms": 9 },
+    "extras": ["Diving", "Nightlife", "Pool Bar"],
+    "pricePerNight": 240,
+    "location": {
+      "country": "Egypt",
+      "city": "North Coast",
+      "address": "Diplo, North Coast"
+    },
+    "rating": 4.2,
+    "reviewsCount": 390
+  },
+  {
+    "name": "Azure Waves",
+    "description": "A modern resort with chic architecture, beach parties, and luxury spa treatments by the sea.",
+    "thumbnail": "azure_thumb.jpg",
+    "images": ["azure1.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 15, "rooms": 7 },
+    "extras": ["Luxury Spa", "DJ Parties", "Private Beach"],
+    "pricePerNight": 280,
+    "location": {
+      "country": "Egypt",
+      "city": "North Coast",
+      "address": "Fouka Bay"
+    },
+    "rating": 4.6,
+    "reviewsCount": 450
+  },
+  {
+    "name": "Laguna Bay Hotel",
+    "description": "A relaxed beachfront property offering water activities, buffet dining, and family-oriented stays.",
+    "thumbnail": "laguna_thumb.jpg",
+    "images": ["laguna1.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 20, "rooms": 10 },
+    "extras": ["Buffet Dining", "Water Activities"],
+    "pricePerNight": 210,
+    "location": {
+      "country": "Egypt",
+      "city": "North Coast",
+      "address": "Bianchi, North Coast"
+    },
+    "rating": 4.1,
+    "reviewsCount": 310
+  },
+  {
+    "name": "Pearl Sands Hotel",
+    "description": "An upscale resort with elegant villas, fine dining, and private pools for an exclusive North Coast experience.",
+    "thumbnail": "pearl_thumb.jpg",
+    "images": ["pearl1.jpg", "pearl2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 14, "rooms": 7 },
+    "extras": ["Private Pool", "Fine Dining", "Beach Access"],
+    "pricePerNight": 300,
+    "location": {
+      "country": "Egypt",
+      "city": "North Coast",
+      "address": "Marina, North Coast"
+    },
+    "rating": 4.8,
+    "reviewsCount": 510
+  },
+  {
+    "name": "Ocean Dunes Resort",
+    "description": "A serene retreat with sand dune views, wellness activities, and eco-friendly lodging for nature lovers.",
+    "thumbnail": "dunes_thumb.jpg",
+    "images": ["dunes1.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 9, "rooms": 4 },
+    "extras": ["Eco Lodging", "Wellness Activities", "Hiking Trails"],
+    "pricePerNight": 170,
+    "location": {
+      "country": "Egypt",
+      "city": "North Coast",
+      "address": "Sidi Heneish"
+    },
+    "rating": 4.0,
+    "reviewsCount": 200
+  },
+  {
+    "name": "Sharm Coral Bay",
+    "description": "A vibrant beachfront resort in Sharm El Sheikh, famous for snorkeling, diving, and coral reef exploration with luxury amenities.",
+    "thumbnail": "sharm_coral_thumb.jpg",
+    "images": ["sharm_coral1.jpg", "sharm_coral2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 18, "rooms": 9 },
+    "extras": ["Snorkeling", "Diving School", "Private Beach"],
+    "pricePerNight": 260,
+    "location": {
+      "country": "Egypt",
+      "city": "Sharm El Sheikh",
+      "address": "Naama Bay"
+    },
+    "rating": 4.7,
+    "reviewsCount": 520
+  },
+  {
+    "name": "Naama Bay Suites",
+    "description": "Modern suites at the heart of Naama Bay with rooftop pools, nightclubs, and premium restaurants.",
+    "thumbnail": "naama_thumb.jpg",
+    "images": ["naama1.jpg", "naama2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 20, "rooms": 10 },
+    "extras": ["Rooftop Pool", "Nightclub", "Fine Dining"],
+    "pricePerNight": 280,
+    "location": {
+      "country": "Egypt",
+      "city": "Sharm El Sheikh",
+      "address": "Naama Bay Center"
+    },
+    "rating": 4.6,
+    "reviewsCount": 410
+  },
+  {
+    "name": "Sharm Aqua Park Resort",
+    "description": "Family-friendly resort with aqua park facilities, kids' entertainment, and all-inclusive packages.",
+    "thumbnail": "aqua_thumb.jpg",
+    "images": ["aqua1.jpg", "aqua2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 15, "rooms": 7 },
+    "extras": ["Aqua Park", "Kids Club", "All Inclusive"],
+    "pricePerNight": 220,
+    "location": {
+      "country": "Egypt",
+      "city": "Sharm El Sheikh",
+      "address": "Sharks Bay"
+    },
+    "rating": 4.3,
+    "reviewsCount": 300
+  },
+  {
+    "name": "Sharm Luxury Retreat",
+    "description": "An exclusive luxury retreat offering private villas, infinity pools, and full spa services.",
+    "thumbnail": "luxury_thumb.jpg",
+    "images": ["luxury1.jpg", "luxury2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 12, "rooms": 6 },
+    "extras": ["Private Villas", "Infinity Pool", "Luxury Spa"],
+    "pricePerNight": 300,
+    "location": {
+      "country": "Egypt",
+      "city": "Sharm El Sheikh",
+      "address": "Ras Umm Sid"
+    },
+    "rating": 4.9,
+    "reviewsCount": 600
+  },
+  {
+    "name": "Sharm Garden Oasis",
+    "description": "Affordable resort surrounded by palm gardens, ideal for families and budget travelers.",
+    "thumbnail": "garden_thumb.jpg",
+    "images": ["garden1.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 10, "rooms": 5 },
+    "extras": ["Garden View", "Free Parking", "Breakfast Buffet"],
+    "pricePerNight": 150,
+    "location": {
+      "country": "Egypt",
+      "city": "Sharm El Sheikh",
+      "address": "Hadaba"
+    },
+    "rating": 4.0,
+    "reviewsCount": 180
+  },
+  {
+    "name": "Red Sea Breeze",
+    "description": "A romantic seaside resort with candle-lit dinners, private beach access, and honeymoon packages.",
+    "thumbnail": "redsea_thumb.jpg",
+    "images": ["redsea1.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 6, "rooms": 3 },
+    "extras": ["Honeymoon Packages", "Private Beach"],
+    "pricePerNight": 240,
+    "location": {
+      "country": "Egypt",
+      "city": "Sharm El Sheikh",
+      "address": "Sharm Bay"
+    },
+    "rating": 4.5,
+    "reviewsCount": 220
+  },
+  {
+    "name": "Sharm Diving Lodge",
+    "description": "Popular diving lodge with expert instructors, diving gear rentals, and reef tours.",
+    "thumbnail": "diving_thumb.jpg",
+    "images": ["diving1.jpg", "diving2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 8, "rooms": 4 },
+    "extras": ["Diving Gear", "Boat Trips"],
+    "pricePerNight": 190,
+    "location": {
+      "country": "Egypt",
+      "city": "Sharm El Sheikh",
+      "address": "Sharks Bay"
+    },
+    "rating": 4.2,
+    "reviewsCount": 240
+  },
+  {
+    "name": "Lagoon View Resort",
+    "description": "A lagoon-front resort with stunning views, spa facilities, and luxury dining.",
+    "thumbnail": "lagoon_thumb.jpg",
+    "images": ["lagoon1.jpg", "lagoon2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 14, "rooms": 7 },
+    "extras": ["Lagoon View", "Spa", "Luxury Dining"],
+    "pricePerNight": 260,
+    "location": {
+      "country": "Egypt",
+      "city": "Sharm El Sheikh",
+      "address": "Nabq Bay"
+    },
+    "rating": 4.4,
+    "reviewsCount": 350
+  },
+  {
+    "name": "Bedouin Desert Camp",
+    "description": "A traditional Bedouin camp offering desert safaris, stargazing, and cultural experiences.",
+    "thumbnail": "bedouin_thumb.jpg",
+    "images": ["bedouin1.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 5, "rooms": 2 },
+    "extras": ["Desert Safari", "Cultural Nights", "Stargazing"],
+    "pricePerNight": 100,
+    "location": {
+      "country": "Egypt",
+      "city": "Sharm El Sheikh",
+      "address": "Desert Outskirts"
+    },
+    "rating": 3.9,
+    "reviewsCount": 120
+  },
+  {
+    "name": "Sharm Marina Hotel",
+    "description": "A chic marina-side hotel with yacht rentals, seafood restaurants, and nightlife.",
+    "thumbnail": "marina_thumb.jpg",
+    "images": ["marina1.jpg", "marina2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 16, "rooms": 8 },
+    "extras": ["Yacht Rentals", "Seafood Dining", "Nightlife"],
+    "pricePerNight": 270,
+    "location": {
+      "country": "Egypt",
+      "city": "Sharm El Sheikh",
+      "address": "Sharm Marina"
+    },
+    "rating": 4.6,
+    "reviewsCount": 430
+  },
+
+  {
+    "name": "Alex Sea Breeze",
+    "description": "Beachfront hotel in Alexandria offering sea view rooms, Mediterranean cuisine, and sunset balconies.",
+    "thumbnail": "alex_breeze_thumb.jpg",
+    "images": ["alex_breeze1.jpg", "alex_breeze2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 14, "rooms": 7 },
+    "extras": ["Sea View", "Balcony", "Seafood Dining"],
+    "pricePerNight": 200,
+    "location": {
+      "country": "Egypt",
+      "city": "Alexandria",
+      "address": "Stanley"
+    },
+    "rating": 4.4,
+    "reviewsCount": 310
+  },
+  {
+    "name": "Alex Corniche Inn",
+    "description": "Affordable inn located on Alexandria’s Corniche with quick beach access and cozy rooms.",
+    "thumbnail": "corniche_thumb.jpg",
+    "images": ["corniche1.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 10, "rooms": 5 },
+    "extras": ["Breakfast Buffet", "Free WiFi"],
+    "pricePerNight": 120,
+    "location": {
+      "country": "Egypt",
+      "city": "Alexandria",
+      "address": "Corniche Rd"
+    },
+    "rating": 4.0,
+    "reviewsCount": 200
+  },
+  {
+    "name": "Montazah Palace Hotel",
+    "description": "Historic-style hotel overlooking Montazah Gardens, offering elegant suites and cultural tours.",
+    "thumbnail": "montazah_thumb.jpg",
+    "images": ["montazah1.jpg", "montazah2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 18, "rooms": 9 },
+    "extras": ["Garden View", "Cultural Tours"],
+    "pricePerNight": 240,
+    "location": {
+      "country": "Egypt",
+      "city": "Alexandria",
+      "address": "Montazah Gardens"
+    },
+    "rating": 4.5,
+    "reviewsCount": 330
+  },
+  {
+    "name": "Alex Harbor View",
+    "description": "Harbor-side hotel with seafood dining, marina views, and easy access to Alexandria’s landmarks.",
+    "thumbnail": "harbor_thumb.jpg",
+    "images": ["harbor1.jpg", "harbor2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 12, "rooms": 6 },
+    "extras": ["Seafood Restaurant", "Marina View"],
+    "pricePerNight": 210,
+    "location": {
+      "country": "Egypt",
+      "city": "Alexandria",
+      "address": "Eastern Harbor"
+    },
+    "rating": 4.3,
+    "reviewsCount": 250
+  },
+  {
+    "name": "Alex City Center Hotel",
+    "description": "Mid-range hotel in downtown Alexandria with easy access to shops, cafes, and cultural attractions.",
+    "thumbnail": "city_thumb.jpg",
+    "images": ["city1.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 16, "rooms": 8 },
+    "extras": ["Free WiFi", "Breakfast Buffet"],
+    "pricePerNight": 180,
+    "location": {
+      "country": "Egypt",
+      "city": "Alexandria",
+      "address": "Downtown Alexandria"
+    },
+    "rating": 4.1,
+    "reviewsCount": 280
+  },
+  {
+    "name": "Stanley Bridge Hotel",
+    "description": "Luxury hotel next to Stanley Bridge with rooftop pool, spa, and beach access.",
+    "thumbnail": "stanley_thumb.jpg",
+    "images": ["stanley1.jpg", "stanley2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 20, "rooms": 10 },
+    "extras": ["Rooftop Pool", "Spa", "Private Beach"],
+    "pricePerNight": 270,
+    "location": {
+      "country": "Egypt",
+      "city": "Alexandria",
+      "address": "Stanley Bridge"
+    },
+    "rating": 4.7,
+    "reviewsCount": 500
+  },
+  {
+    "name": "Alexandria Lighthouse Inn",
+    "description": "A themed inn inspired by the ancient Lighthouse of Alexandria, offering cultural nights and guided history tours.",
+    "thumbnail": "lighthouse_thumb.jpg",
+    "images": ["lighthouse1.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 8, "rooms": 4 },
+    "extras": ["Cultural Nights", "Guided Tours"],
+    "pricePerNight": 150,
+    "location": {
+      "country": "Egypt",
+      "city": "Alexandria",
+      "address": "Qaitbay Fort"
+    },
+    "rating": 4.0,
+    "reviewsCount": 190
+  },
+  {
+    "name": "Alex Green Oasis",
+    "description": "Eco-friendly hotel surrounded by gardens with organic dining and yoga classes.",
+    "thumbnail": "greenoasis_thumb.jpg",
+    "images": ["greenoasis1.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 14, "rooms": 7 },
+    "extras": ["Organic Dining", "Yoga Retreats"],
+    "pricePerNight": 200,
+    "location": {
+      "country": "Egypt",
+      "city": "Alexandria",
+      "address": "Smouha"
+    },
+    "rating": 4.2,
+    "reviewsCount": 240
+  },
+  {
+    "name": "Alex Cultural Stay",
+    "description": "A boutique hotel offering art exhibitions, local music nights, and workshops for guests.",
+    "thumbnail": "cultural_thumb.jpg",
+    "images": ["cultural1.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 10, "rooms": 5 },
+    "extras": ["Art Exhibitions", "Music Nights"],
+    "pricePerNight": 160,
+    "location": {
+      "country": "Egypt",
+      "city": "Alexandria",
+      "address": "El Mansheya"
+    },
+    "rating": 4.1,
+    "reviewsCount": 210
+  },
+  {
+    "name": "Mediterranean Pearl Hotel",
+    "description": "Upscale hotel with elegant interiors, fine dining, and direct views of the Mediterranean Sea.",
+    "thumbnail": "med_pearl_thumb.jpg",
+    "images": ["med_pearl1.jpg", "med_pearl2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 18, "rooms": 9 },
+    "extras": ["Fine Dining", "Sea View", "Luxury Spa"],
+    "pricePerNight": 290,
+    "location": {
+      "country": "Egypt",
+      "city": "Alexandria",
+      "address": "Corniche Rd, Gleem"
+    },
+    "rating": 4.8,
+    "reviewsCount": 560
+  },
+
+  {
+    "name": "Mansoura Riverside Hotel",
+    "description": "A stylish riverside hotel in Mansoura with direct views of the Nile branch, offering modern rooms and local cuisine specialties.",
+    "thumbnail": "mansoura_riverside_thumb.jpg",
+    "images": ["mansoura1.jpg", "mansoura2.jpg", "mansoura3.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 10, "rooms": 5 },
+    "extras": ["Local Cuisine", "Conference Hall", "Gym"],
+    "pricePerNight": 180,
+    "location": {
+      "country": "Egypt",
+      "city": "Mansoura",
+      "address": "Corniche St, Mansoura"
+    },
+    "rating": 4.3,
+    "reviewsCount": 120
+  },
+  {
+    "name": "Delta Plaza Hotel",
+    "description": "Located in the heart of Mansoura, this hotel provides comfortable stays for business and leisure travelers with easy access to universities and shopping areas.",
+    "thumbnail": "delta_plaza_thumb.jpg",
+    "images": ["delta1.jpg", "delta2.jpg", "delta3.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 14, "rooms": 7 },
+    "extras": ["Business Center", "Café", "Laundry Service"],
+    "pricePerNight": 200,
+    "location": {
+      "country": "Egypt",
+      "city": "Mansoura",
+      "address": "Al Gomhoria St, Mansoura"
+    },
+    "rating": 4.1,
+    "reviewsCount": 95
+  },
+  {
+    "name": "Nile Breeze Inn",
+    "description": "A cozy inn in Mansoura offering budget-friendly rooms with views of the Nile and a family-friendly atmosphere.",
+    "thumbnail": "nile_breeze_thumb.jpg",
+    "images": ["nileb1.jpg", "nileb2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 8, "rooms": 4 },
+    "extras": ["Free Breakfast", "WiFi", "Parking"],
+    "pricePerNight": 120,
+    "location": {
+      "country": "Egypt",
+      "city": "Mansoura",
+      "address": "El Mashaya St, Mansoura"
+    },
+    "rating": 3.9,
+    "reviewsCount": 60
+  },
+  {
+    "name": "University Stay Hotel",
+    "description": "Perfect for visitors and students, this hotel in Mansoura is located near the main university campus with affordable rates and clean rooms.",
+    "thumbnail": "uni_stay_thumb.jpg",
+    "images": ["uni1.jpg", "uni2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 16, "rooms": 8 },
+    "extras": ["Study Lounge", "Cafeteria", "WiFi"],
+    "pricePerNight": 150,
+    "location": {
+      "country": "Egypt",
+      "city": "Mansoura",
+      "address": "University Rd, Mansoura"
+    },
+    "rating": 4.0,
+    "reviewsCount": 88
+  },
+  {
+    "name": "Delta Club Hotel",
+    "description": "A premium club-style hotel with sports facilities, swimming pools, and family-friendly entertainment in Mansoura.",
+    "thumbnail": "delta_club_thumb.jpg",
+    "images": ["club1.jpg", "club2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 20, "rooms": 10 },
+    "extras": ["Sports Facilities", "Pool", "Kids Area"],
+    "pricePerNight": 250,
+    "location": {
+      "country": "Egypt",
+      "city": "Mansoura",
+      "address": "Club St, Mansoura"
+    },
+    "rating": 4.4,
+    "reviewsCount": 200
+  },
+  {
+    "name": "Mansoura Garden Hotel",
+    "description": "A quiet garden hotel offering green surroundings, peaceful stays, and family-oriented services in Mansoura city.",
+    "thumbnail": "garden_thumb.jpg",
+    "images": ["garden1.jpg", "garden2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 12, "rooms": 6 },
+    "extras": ["Garden Café", "Free Parking", "WiFi"],
+    "pricePerNight": 170,
+    "location": {
+      "country": "Egypt",
+      "city": "Mansoura",
+      "address": "Garden Rd, Mansoura"
+    },
+    "rating": 4.2,
+    "reviewsCount": 110
+  },
+  {
+    "name": "Mansoura Palace Hotel",
+    "description": "A luxury palace-style hotel in Mansoura designed for high-end guests seeking elegance, comfort, and premium services.",
+    "thumbnail": "palace_thumb.jpg",
+    "images": ["palace1.jpg", "palace2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 18, "rooms": 9 },
+    "extras": ["Banquet Hall", "Luxury Spa", "Fine Dining"],
+    "pricePerNight": 300,
+    "location": {
+      "country": "Egypt",
+      "city": "Mansoura",
+      "address": "King St, Mansoura"
+    },
+    "rating": 4.7,
+    "reviewsCount": 180
+  },
+  {
+    "name": "Delta Boutique Hotel",
+    "description": "A boutique hotel in Mansoura with stylish interiors, modern amenities, and a personalized hospitality experience.",
+    "thumbnail": "boutique_thumb.jpg",
+    "images": ["boutique1.jpg", "boutique2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 10, "rooms": 5 },
+    "extras": ["Boutique Dining", "WiFi", "Concierge"],
+    "pricePerNight": 190,
+    "location": {
+      "country": "Egypt",
+      "city": "Mansoura",
+      "address": "Shuhada St, Mansoura"
+    },
+    "rating": 4.3,
+    "reviewsCount": 75
+  },
+  {
+    "name": "Mansoura Corniche Hotel",
+    "description": "A popular hotel located on the Corniche of Mansoura with scenic views, a restaurant, and easy city access.",
+    "thumbnail": "corniche_thumb.jpg",
+    "images": ["corniche1.jpg", "corniche2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 14, "rooms": 7 },
+    "extras": ["Restaurant", "WiFi", "Parking"],
+    "pricePerNight": 160,
+    "location": {
+      "country": "Egypt",
+      "city": "Mansoura",
+      "address": "Corniche Rd, Mansoura"
+    },
+    "rating": 4.1,
+    "reviewsCount": 90
+  },
+  {
+    "name": "Delta Grand Hotel",
+    "description": "The Delta Grand Hotel offers a full-service luxury experience in Mansoura with spa, fine dining, and modern amenities.",
+    "thumbnail": "grand_thumb.jpg",
+    "images": ["grand1.jpg", "grand2.jpg"],
+    "isAvailable": true,
+    "capacity": { "guests": 20, "rooms": 10 },
+    "extras": ["Spa", "Fine Dining", "Pool"],
+    "pricePerNight": 280,
+    "location": {
+      "country": "Egypt",
+      "city": "Mansoura",
+      "address": "Grand Rd, Mansoura"
+    },
+    "rating": 4.6,
+    "reviewsCount": 150
+  }
+]
