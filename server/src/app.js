@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-const notFoundError = require("./utils/notFoundError");
+const notFoundError = require("./middlewares/notFoundError");
 const globalErrorHandler = require("./middlewares/globalErrorHandler");
 const helmet = require("helmet");
 const cors = require("cors");
@@ -8,6 +8,7 @@ const mongoSanititze = require("express-mongo-sanitize");
 const cookieParser = require("cookie-parser");
 const rateLimit = require("express-rate-limit");
 const hpp = require("hpp");
+const ResponseFormatter = require("./core/ResponseFormatter");
 
 const app = express();
 
@@ -55,7 +56,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.get("/", (req, res) => {
-  res.json({ status: "success", message: "Welcome to my Hotel App" });
+  ResponseFormatter.success(res, null, "Welcome to my Hotel App", 200);
 });
 
 app.all(/(.*)/, notFoundError);

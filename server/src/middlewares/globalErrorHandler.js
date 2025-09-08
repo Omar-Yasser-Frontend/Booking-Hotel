@@ -1,5 +1,6 @@
 const { ZodError } = require("zod");
-const AppError = require("../utils/AppError");
+const AppError = require("../core/AppError");
+const ResponseFormatter = require("../core/ResponseFormatter");
 
 const handleCastErrorDB = (err) => {
   const message = `Invalid ${err.path}: ${err.value}.`;
@@ -31,10 +32,11 @@ const sendErrorDev = (err, res) => {
 const sendErrorProd = (err, res) => {
   // Operational, trusted error: send message to client
   if (err?.isOperational) {
-    res.status(err.statusCode).json({
-      status: err.status,
-      message: err.message,
-    });
+    if (err.statusCode < 500) {
+      return ResponseFormatter.fail(res, err.message, null, err.statusCode);
+    }
+
+    return ResponseFormatter.error(res, err.message, err.statusCode, null);
 
     // Programming or other unknown error: don't leak error details
   } else {
@@ -42,10 +44,7 @@ const sendErrorProd = (err, res) => {
     console.error("ERROR 💥", err);
 
     // 2) Send generic message
-    res.status(500).json({
-      status: "error",
-      message: "Something went very wrong!",
-    });
+    return ResponseFormatter.error(res, "Something went wrong", 500);
   }
 };
 

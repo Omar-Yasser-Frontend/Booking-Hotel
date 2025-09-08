@@ -7,6 +7,7 @@ const connectDB = require("./utils/db");
 process.on("uncaughtException", (err) => {
   console.log("UNHANDLED EXCEPTION 🚀!");
   console.log(err.name, err.message);
+  console.log(err.stack);
 
   process.exit(1);
 });

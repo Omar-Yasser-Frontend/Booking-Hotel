@@ -11,6 +11,7 @@ describe("Testing Root route", () => {
     const res = await request(app).get("/");
     expect(res.body).toEqual({
       status: "success",
+      data: null,
       message: "Welcome to my Hotel App",
     });
   });
