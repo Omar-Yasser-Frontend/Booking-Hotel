@@ -1,6 +1,3 @@
-// import mongoose from "mongoose";
-// import app from "./app.js";
-
 require("dotenv").config();
 const connectDB = require("./utils/db");
 
