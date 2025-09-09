@@ -1,17 +1,20 @@
 const express = require("express");
 const morgan = require("morgan");
-const notFoundError = require("./middlewares/notFoundError");
-const globalErrorHandler = require("./middlewares/globalErrorHandler");
 const helmet = require("helmet");
 const cors = require("cors");
 const mongoSanititze = require("express-mongo-sanitize");
 const cookieParser = require("cookie-parser");
 const rateLimit = require("express-rate-limit");
 const hpp = require("hpp");
+
+const roomRouter = require("./routes/rooms");
+const notFoundError = require("./middlewares/notFoundError");
 const ResponseFormatter = require("./core/ResponseFormatter");
+const globalErrorHandler = require("./middlewares/globalErrorHandler");
 
 const app = express();
 
+app.set("query parser", "extended");
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -30,7 +33,7 @@ app.use(
   })
 );
 
-app.use(helmet());
+// app.use(helmet());
 
 app.use(cookieParser());
 
@@ -49,7 +52,7 @@ app.use((req, res, next) => {
 
 app.use(mongoSanititze());
 
-app.use(hpp());
+// app.use(hpp());
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
@@ -58,6 +61,8 @@ if (process.env.NODE_ENV === "development") {
 app.get("/", (req, res) => {
   ResponseFormatter.success(res, null, "Welcome to my Hotel App", 200);
 });
+
+app.use("/api/v1/rooms", roomRouter);
 
 app.all(/(.*)/, notFoundError);
 
