@@ -48,5 +48,9 @@ class APIFeatures {
 
     return this;
   }
+
+  then(res, rej) {
+    return this.query.then(res, rej);
+  }
 }
 module.exports = APIFeatures;
