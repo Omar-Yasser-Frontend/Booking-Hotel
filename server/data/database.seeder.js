@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Room = require("../src/models/room");
 const dotenv = require("dotenv");
 const fs = require("fs");
 const path = require("path");
@@ -6,8 +7,7 @@ const path = require("path");
 dotenv.config();
 
 mongoose.connect(process.env.MONGODB_URI).then(async () => {
-  const roomSchema = new mongoose.Schema({}, { strict: false });
-  const RoomsModel = mongoose.model("rooms", roomSchema);
+  const RoomsModel = Room;
   console.log("Database connected successfully...");
   if (process.argv.includes("--clear")) {
     const result = await RoomsModel.deleteMany();

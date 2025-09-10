@@ -1,5 +1,5 @@
 const z = require("zod");
-const validation = require("../src/middlewares/validation.middleware");
+const validation = require("../src/middlewares/validationMiddleware");
 
 const testSchema = z.object({
   name: z.string().trim(),

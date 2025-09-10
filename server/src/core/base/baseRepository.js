@@ -1,4 +1,4 @@
-class BaseService {
+class BaseRepository {
   constructor(model) {
     this.model = model;
   }
@@ -63,4 +63,4 @@ class BaseService {
   }
 }
 
-module.exports = BaseService;
+module.exports = BaseRepository;

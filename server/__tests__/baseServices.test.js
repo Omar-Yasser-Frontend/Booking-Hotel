@@ -1,7 +1,7 @@
 const { default: mongoose } = require("mongoose");
-const BaseRepository = require("../src/core/base/base.repository");
+const BaseRepository = require("../src/core/base/baseRepository");
 require("dotenv").config();
-const BaseService = require("../src/core/base/base.service");
+const BaseService = require("../src/core/base/baseService");
 const AppError = require("../src/core/AppError");
 
 let TestModel;
