@@ -107,7 +107,7 @@ class BaseService {
   async updateOne(filter, data, entityName = "Item") {
     const update = await this.repo.updateOne(filter, data);
 
-    if (!update)
+    if (!update.modifiedCount)
       throw new AppError(
         `Can't update ${entityName}, ${entityName} Not Found`,
         404
@@ -121,7 +121,7 @@ class BaseService {
 
     if (!result)
       throw new AppError(
-        `Can't update ${entityName}, ${entityName} Not found`,
+        `Can't update ${entityName}, ${entityName} Not Found`,
         404
       );
 
@@ -133,7 +133,7 @@ class BaseService {
 
     if (!result)
       throw new AppError(
-        `Can't update ${entityName}, ${entityName} Not found`,
+        `Can't update ${entityName}, ${entityName} Not Found`,
         404
       );
 

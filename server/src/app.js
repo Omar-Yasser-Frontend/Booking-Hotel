@@ -62,7 +62,7 @@ app.get("/", (req, res) => {
   ResponseFormatter.success(res, null, "Welcome to my Hotel App", 200);
 });
 
-app.use("/api/v1/rooms", roomRouter);
+app.use("/api/v1/room", roomRouter);
 
 app.all(/(.*)/, notFoundError);
 

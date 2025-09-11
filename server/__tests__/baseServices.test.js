@@ -17,6 +17,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await mongoose.disconnect();
+  jest.restoreAllMocks();
 });
 
 afterEach(async () => {
@@ -198,7 +199,6 @@ describe("testing findByIdAndUpdate method", () => {
     const student = await baseService.findByIdAndUpdate(id, { name }, "users");
     const allStudents = await baseService.find();
 
-    console.log(student);
 
     allStudents.forEach((std) => {
       if (std._id.toString() === student._id.toString()) {
@@ -237,7 +237,6 @@ describe("testing findOneAndUpdate method", () => {
     );
     const allStudents = await baseService.find();
 
-    console.log(student);
 
     allStudents.forEach((std) => {
       if (std._id.toString() === student._id.toString()) {

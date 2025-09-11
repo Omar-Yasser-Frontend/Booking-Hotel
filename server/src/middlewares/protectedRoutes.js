@@ -8,13 +8,14 @@ module.exports = (req, res, next) => {
   if (!accessToken && !refreshToken) throw new AppError("Not Authorized", 401);
 
   try {
-    const decoded = jwt.verify(accessToken, secretKey);
+    const decoded = jwt.verify(accessToken, process.env.JWT_SECRET);
+    console.log(decoded);
     req.user = decoded.user;
     next();
   } catch (err) {
     if (!refreshToken) throw new AppError("Not Authorized", 401);
 
-    const decoded = jwt.verify(refreshToken, secretKey);
+    const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET);
     const newAccessToken = jwt.sign({ user: decoded.user }, secretKey, {
       expiresIn: "15m",
     });

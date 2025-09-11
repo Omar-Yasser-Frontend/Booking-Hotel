@@ -1,8 +1,8 @@
 const handleNestedFilter = require("./handleNestedFilter");
 
 class APIFeatures {
-  constructor(model, queryString) {
-    this.query = model.find();
+  constructor(query, queryString) {
+    this.query = query;
     this.queryString = handleNestedFilter(queryString);
   }
 
@@ -14,7 +14,6 @@ class APIFeatures {
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
     queryStr = JSON.parse(queryStr);
-
 
     this.query = this.query.find(queryStr);
 

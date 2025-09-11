@@ -13,6 +13,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await mongoose.disconnect();
+  jest.restoreAllMocks();
 });
 
 describe("testing BaseRepository Methods", () => {

@@ -1,14 +1,10 @@
-const FeatureAPI = require("../utils/apiFeatures");
 const RoomService = require("../services/roomService");
 const ResponseFormatter = require("../core/ResponseFormatter");
-const Room = require("../models/room");
+
+const roomService = new RoomService();
 
 exports.getRooms = async (req, res) => {
-  const filter = await new FeatureAPI(Room, req.query)
-    .filter()
-    .sort()
-    .paginate()
-    .limitFields();
+  const filter = await roomService.roomsFilterQuery(req.query);
 
   ResponseFormatter.success(res, {
     resultLength: filter.length,
@@ -17,32 +13,39 @@ exports.getRooms = async (req, res) => {
 };
 
 exports.getRoomById = async (req, res) => {
-  const room = await new RoomService().findById(req.params.id, "Room");
+  const room = await roomService.findById(req.params.id, "Room");
 
-  ResponseFormatter.success(res, room);
+  ResponseFormatter.success(res, { room });
 };
 
 exports.createRoom = async (req, res) => {
-  const room = await new RoomService().create(req.body);
+  console.log("Failed Here");
+  const room = await roomService.create({
+    ...req.data,
+    userId: req.user.userId,
+  });
 
-  ResponseFormatter.success(res, room);
+  ResponseFormatter.success(res, { room });
 };
 
 exports.updateRoom = async (req, res) => {
-  const updatedRoom = await new RoomService().updateOne(
+  const updatedRoom = await roomService.findOneAndUpdate(
     { _id: req.params.id, userId: req.user._id },
     req.body,
     "Room"
   );
 
-  ResponseFormatter.success(res, updatedRoom);
+  ResponseFormatter.success(res, { room: updatedRoom });
 };
 
 exports.deleteRoom = async (req, res) => {
-  await new RoomService().deleteOne({
-    _id: req.params.id,
-    userId: req.user._id,
-  });
+  await roomService.deleteOne(
+    {
+      _id: req.params.id,
+      userId: req.user.userId,
+    },
+    "Room"
+  );
 
   ResponseFormatter.success(res, null, null, 204);
 };

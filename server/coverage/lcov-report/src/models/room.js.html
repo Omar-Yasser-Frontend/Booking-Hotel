@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/app.js</title>
+    <title>Code coverage report for src/models/room.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../prettify.css" />
-    <link rel="stylesheet" href="../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">src</a> app.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/models</a> room.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.22% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>70/72</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.22% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>70/72</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
@@ -131,11 +131,7 @@
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
 <a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">6x</span>
+<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -179,24 +175,6 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -207,78 +185,88 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const express = require("express");
-const morgan = require("morgan");
-const helmet = require("helmet");
-const cors = require("cors");
-const mongoSanititze = require("express-mongo-sanitize");
-const cookieParser = require("cookie-parser");
-const rateLimit = require("express-rate-limit");
-const hpp = require("hpp");
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { default: mongoose } = require("mongoose");
 &nbsp;
-const roomRouter = require("./routes/rooms");
-const notFoundError = require("./middlewares/notFoundError");
-const ResponseFormatter = require("./core/ResponseFormatter");
-const globalErrorHandler = require("./middlewares/globalErrorHandler");
-&nbsp;
-const app = express();
-&nbsp;
-app.set("query parser", "extended");
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
+const roomSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      unique: true,
+      minLength: [10, "Name must be 10 characters at least"],
+      maxLength: [100, "Name can't exceed 1000 character"],
+    },
+    description: {
+      type: String,
+      required: true,
+      unique: true,
+      minLength: [10, "Description must be 10 characters at least"],
+      maxLength: [1000, "Description can't exceed 1000 character"],
+    },
+    thumbnail: {
+      type: String,
+      required: true,
+    },
+    images: {
+      type: [String],
+      required: true,
+    },
+    isAvailable: {
+      type: Boolean,
+      required: true,
+      default: true,
+    },
+    capacity: {
+      type: {
+        guests: { type: Number },
+        rooms: { type: Number },
+      },
+      required: true,
+    },
+    extras: [String],
+    pricePerNight: {
+      type: Number,
+      min: 10,
+      required: true,
+    },
+    location: {
+      country: { type: String, required: true, default: "Egypt" },
+      city: { type: String, required: true },
+      address: { type: String, required: true },
+    },
+    rating: {
+      type: Number,
+      required: true,
+      default: 0,
+      min: [0, "Rating can't be less than 0"],
+      max: [5, "Rating can't exceed number 5"],
+    },
+    reviewsCount: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+  },
+  { timestamps: true }
 );
 &nbsp;
-app.use(
-  rateLimit({
-    windowMs: 15 * 60 * 1000,
-    limit: 500,
-    standardHeaders: "draft-8",
-    legacyHeaders: false,
-    ipv6Subnet: 56,
-  })
-);
+const Room = mongoose.model("room", roomSchema);
 &nbsp;
-// app.use(helmet());
-&nbsp;
-app.use(cookieParser());
-&nbsp;
-app.use(express.json({ limit: "10kb" }));
-&nbsp;
-// allow modifing query property in req object
-// to prevent errors in mongoSanitize library and better query for mongoose
-app.use((req, res, next) =&gt; {
-  Object.defineProperty(req, "query", {
-    ...Object.getOwnPropertyDescriptor(req, "query"),
-    value: req.query,
-    writable: true,
-  });
-  next();
-});
-&nbsp;
-app.use(mongoSanititze());
-&nbsp;
-// app.use(hpp());
-&nbsp;
-if (process.env.NODE_ENV === "development") <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >  app.use(morgan("dev"));</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-&nbsp;
-app.get("/", (req, res) =&gt; {
-  ResponseFormatter.success(res, null, "Welcome to my Hotel App", 200);
-});
-&nbsp;
-app.use("/api/v1/room", roomRouter);
-&nbsp;
-app.all(/(.*)/, notFoundError);
-&nbsp;
-app.use(globalErrorHandler);
-&nbsp;
-// for testing and seperating express configuration from server
-module.exports = app;
+module.exports = Room;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -288,14 +276,14 @@ module.exports = app;
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
                 at 2025-09-11T18:00:01.044Z
             </div>
-        <script src="../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../sorter.js"></script>
-        <script src="../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
