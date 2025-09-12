@@ -8,6 +8,7 @@ const rateLimit = require("express-rate-limit");
 const hpp = require("hpp");
 
 const roomRouter = require("./routes/rooms");
+const authRouter = require("./routes/auth");
 const notFoundError = require("./middlewares/notFoundError");
 const ResponseFormatter = require("./core/ResponseFormatter");
 const globalErrorHandler = require("./middlewares/globalErrorHandler");
@@ -33,7 +34,7 @@ app.use(
   })
 );
 
-// app.use(helmet());
+app.use(helmet());
 
 app.use(cookieParser());
 
@@ -52,7 +53,7 @@ app.use((req, res, next) => {
 
 app.use(mongoSanititze());
 
-// app.use(hpp());
+app.use(hpp());
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
@@ -63,6 +64,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/room", roomRouter);
+app.use("/api/v1/auth", authRouter);
 
 app.all(/(.*)/, notFoundError);
 
