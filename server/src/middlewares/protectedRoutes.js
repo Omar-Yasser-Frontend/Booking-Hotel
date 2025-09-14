@@ -9,8 +9,7 @@ module.exports = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(accessToken, process.env.JWT_SECRET);
-    console.log(decoded);
-    req.user = decoded.user;
+    req.user = decoded;
     next();
   } catch (err) {
     if (!refreshToken) throw new AppError("Not Authorized", 401);
@@ -21,7 +20,7 @@ module.exports = (req, res, next) => {
     });
 
     res.setHeader("Authorization", `Bearer ${newAccessToken}`);
-    req.user = decoded.user;
+    req.user = decoded;
     next();
   }
 };
