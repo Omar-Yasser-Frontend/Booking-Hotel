@@ -24,8 +24,12 @@ const userSchema = new mongoose.Schema(
     passwordUpdatedAt: Date,
     isActive: { type: Boolean, default: false },
     confirmationToken: {
-      token: { type: String },
-      expiresAt: { type: Date },
+      token: String,
+      expiresAt: Date,
+    },
+    resetPassword: {
+      token: String,
+      expiresAt: Date,
     },
     deactiveate: { type: Boolean, required: true, default: false },
   },
