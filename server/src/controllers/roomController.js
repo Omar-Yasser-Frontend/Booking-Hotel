@@ -22,7 +22,7 @@ exports.createRoom = async (req, res) => {
   console.log("Failed Here");
   const room = await roomService.create({
     ...req.data,
-    userId: req.user.userId,
+    userId: req.user._id,
   });
 
   ResponseFormatter.success(res, { room });
@@ -42,10 +42,19 @@ exports.deleteRoom = async (req, res) => {
   await roomService.deleteOne(
     {
       _id: req.params.id,
-      userId: req.user.userId,
+      userId: req.user._id,
     },
     "Room"
   );
 
   ResponseFormatter.success(res, null, null, 204);
+};
+
+exports.searchRoom = async (req, res) => {
+  const filter = await roomService.searchRooms(req.query.search, req.query);
+
+  ResponseFormatter.success(res, {
+    resultLength: filter.length,
+    rooms: filter,
+  });
 };

@@ -16,6 +16,20 @@ class RoomService extends BaseService {
 
     return result;
   }
+
+  async searchRooms(search, queryString) {
+    const result = await new APIFeature(
+      this.repo.find({
+        $or: [
+          { name: { $regex: search } },
+          { description: { $regex: search } },
+        ],
+      }),
+      queryString
+    ).paginate();
+
+    return result;
+  }
 }
 
 module.exports = RoomService;

@@ -9,6 +9,8 @@ const router = express.Router();
 
 router.get("/", roomController.getRooms);
 
+router.get("/search", roomController.searchRoom);
+
 router.get("/:id", roomController.getRoomById);
 
 router.use(protectedRoutes);
