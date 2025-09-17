@@ -40,6 +40,15 @@ userSchema.methods.comparePassword = async function (candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
 };
 
+userSchema.methods.passwordChangeDate = function (issueAtJWT) {
+  const passwordUpdatedAt = parseInt(
+    this.passwordUpdatedAt.getTime() / 1000,
+    10
+  );
+
+  return passwordUpdatedAt > issueAtJWT;
+};
+
 userSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
     const hashedPassword = await bcrypt.hash(this.password, 12);
@@ -49,9 +58,9 @@ userSchema.pre("save", async function (next) {
 });
 
 userSchema.pre("save", function (next) {
-  if (!this.isModified("password") || this.isNew) return next();
+  if (!this.isModified("password")) return next();
 
-  this.passwordChangedAt = Date.now() - 1000;
+  this.passwordUpdatedAt = Date.now() - 1000;
   next();
 });
 
