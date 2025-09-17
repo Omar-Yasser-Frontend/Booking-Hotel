@@ -21,6 +21,7 @@ const handleDuplicateFieldDB = (err) => {
 };
 
 const sendErrorDev = (err, res) => {
+  console.error("ERROR 💥", err);
   res.status(err.statusCode).json({
     status: err.status,
     error: err,
@@ -31,6 +32,7 @@ const sendErrorDev = (err, res) => {
 
 const sendErrorProd = (err, res) => {
   // Operational, trusted error: send message to client
+  console.error("ERROR 💥", err);
   if (err?.isOperational) {
     if (err.statusCode < 500) {
       return ResponseFormatter.fail(res, err.message, null, err.statusCode);
@@ -41,7 +43,6 @@ const sendErrorProd = (err, res) => {
     // Programming or other unknown error: don't leak error details
   } else {
     // 1) Log error
-    console.error("ERROR 💥", err);
 
     // 2) Send generic message
     return ResponseFormatter.error(res, "Something went wrong", 500);
