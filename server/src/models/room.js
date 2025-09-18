@@ -33,7 +33,7 @@ const roomSchema = new mongoose.Schema(
       guests: { type: Number, required: true },
       rooms: { type: Number, required: true },
     },
-    extras: [String],
+    extras: [{ name: String, price: Number }],
     pricePerNight: {
       type: Number,
       min: 10,
