@@ -165,8 +165,30 @@ export const changePassword = async (req, res) => {
   ResponseFormatter.success(res, null, "Password changed successfully", 200);
 };
 
-exports.logout = (req, res) => {
+export const logout = (req, res) => {
   res.clearCookie("refreshToken");
 
   ResponseFormatter.success(res, null, null, 204);
+};
+
+export const googleAuth = async (req, res, next) => {
+  const {
+    email,
+    name: username,
+    picture: image,
+  } = await getGoogleUserInfo(req.body.code);
+  let user = await authService.findOne({ email: email }, "user", true);
+
+  if (!user)
+    user = await authService.create({
+      isActive: true,
+      role: "user",
+      username,
+      email,
+      image,
+    });
+
+  setAuthTokens(res, user);
+
+  res.json({ user });
 };
