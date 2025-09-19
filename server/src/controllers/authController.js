@@ -32,7 +32,22 @@ export const login = async (req, res) => {
   const { email, password } = req.body;
   const user = await authService.findUserByEmail(email, password);
 
-  if (!user.isActive)
+  if (!user.isActive) {
+    const { token, hashedToken } = cryptoToken();
+
+    user.confirmationToken.token = hashedToken;
+    user.confirmationToken.expiresAt = 60 * 15 * 1000 + Date.now();
+    await user.save();
+
+    sendEmail(
+      user.email,
+      "Confirm your account",
+      templateInjection(confirmEmailTemp, {
+        "{{name}}": user.username,
+        "{{year}}": new Date().toISOString(),
+        "{{confirmLink}}": `${process.env.CLIENT_URL}/reset-password?token=${token}&userId=${user._id}`,
+      })
+    );
     throw new AppError("Please confirm your email before logging in", 403);
   }
 
@@ -55,10 +70,14 @@ export const signup = async (req, res) => {
   });
 
   sendEmail(
-    `${process.env.CLIENT_URL}/confirmation?token=${token}&userId=${user._id}`
+    user.email,
+    "Confirm your account",
+    templateInjection(confirmEmailTemp, {
+      "{{name}}": user.username,
+      "{{year}}": new Date().toISOString(),
+      "{{confirmLink}}": `${process.env.CLIENT_URL}/reset-password?token=${token}&userId=${user._id}`,
+    })
   );
-
-  console.log(token);
 
   ResponseFormatter.success(
     res,
@@ -135,7 +154,7 @@ export const resetPassword = async (req, res) => {
 
 export const changePassword = async (req, res) => {
   const { currentPassword, newPassword } = req.body;
-  const user = await authService.findById(userId, "user");
+  const user = req.user;
 
   if (!(await user.comparePassword(currentPassword)))
     throw new AppError("Invalid Password", 403);
