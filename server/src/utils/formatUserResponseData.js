@@ -1,4 +1,4 @@
-module.exports = (user) => {
+export default (user) => {
   const modifiedUser = { ...user };
   const exclude = [
     "__v",

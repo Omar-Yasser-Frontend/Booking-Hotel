@@ -1,27 +1,47 @@
-const crypto = require("crypto");
-const AppError = require("../core/AppError");
-const sendEmail = require("../utils/sendEmail");
-const cryptoToken = require("../utils/cryptoToken");
-const setAuthTokens = require("../utils/authTokens");
-const AuthService = require("../services/authService");
-const ResponseFormatter = require("../core/ResponseFormatter");
-const formatUserResponseData = require("../utils/formatUserResponseData");
+import crypto from "crypto";
+import AppError from "../core/AppError.js";
+import cryptoToken from "../utils/cryptoToken.js";
+import setAuthTokens from "../utils/authTokens.js";
+import AuthService from "../services/authService.js";
+import ResponseFormatter from "../core/ResponseFormatter.js";
+import formatUserResponseData from "../utils/formatUserResponseData.js";
+import sendEmail from "../libs/sendEmails.js";
+import templateInjection from "../utils/templateInjection.js";
+import fs from "fs";
+import path from "path";
+import getGoogleUserInfo from "../utils/googleOAuthClient.js";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+// console.log(import.meta.dirname);
+
+const __dirname = path.dirname(__filename);
 
 const authService = new AuthService();
+const confirmEmailTemp = fs.readFileSync(
+  path.join(__dirname, "..", "templates", "confirmEmail.html"),
 
-exports.login = async (req, res) => {
+  "utf-8"
+);
+const resetPasswordTemp = fs.readFileSync(
+  path.join(__dirname, "..", "templates", "resetPassword.html"),
+  "utf-8"
+);
+
+export const login = async (req, res) => {
   const { email, password } = req.body;
   const user = await authService.findUserByEmail(email, password);
 
   if (!user.isActive)
     throw new AppError("Please confirm your email before logging in", 403);
+  }
 
   setAuthTokens(res, user);
 
-  ResponseFormatter.success(res, formatUserResponseData(user));
+  ResponseFormatter.success(res, { user: formatUserResponseData(user) });
 };
 
-exports.signup = async (req, res) => {
+export const signup = async (req, res) => {
   const { token, hashedToken } = cryptoToken();
 
   const user = await authService.create({
@@ -48,7 +68,7 @@ exports.signup = async (req, res) => {
   );
 };
 
-exports.confirmUser = async (req, res) => {
+export const confirmUser = async (req, res) => {
   const { token, userId } = req.body;
   const user = await authService.findById(userId, "user");
   const hashToken = crypto.createHash("sha256").update(token).digest("hex");
@@ -68,7 +88,7 @@ exports.confirmUser = async (req, res) => {
   ResponseFormatter.success(res, null, "Account verified", 200);
 };
 
-exports.forgotPassword = async (req, res) => {
+export const forgotPassword = async (req, res) => {
   const { email } = req.body;
   const user = await authService.findOne({ email }, "user");
   const { token, hashedToken } = cryptoToken();
@@ -78,13 +98,19 @@ exports.forgotPassword = async (req, res) => {
   await user.save();
 
   sendEmail(
-    `${process.env.CLIENT_URL}/reset-password?token=${token}&userId=${user._id}`
+    user.email,
+    "Reset your password",
+    templateInjection(resetPasswordTemp, {
+      "{{name}}": user.username,
+      "{{year}}": new Date().toISOString(),
+      "{{resetLink}}": `${process.env.CLIENT_URL}/reset-password?token=${token}&userId=${user._id}`,
+    })
   );
 
   ResponseFormatter.success(res, null, "Check your email to reset password");
 };
 
-exports.resetPassword = async (req, res) => {
+export const resetPassword = async (req, res) => {
   const { token, userId, password } = req.body;
   const user = await authService.findById(userId, "user");
   const hashToken = crypto.createHash("sha256").update(token).digest("hex");
@@ -107,8 +133,7 @@ exports.resetPassword = async (req, res) => {
   );
 };
 
-exports.changePassword = async (req, res) => {
-  const { userId } = req.user;
+export const changePassword = async (req, res) => {
   const { currentPassword, newPassword } = req.body;
   const user = await authService.findById(userId, "user");
 

@@ -1,9 +1,10 @@
-const express = require("express");
+import express from "express";
+import * as authController from "../controllers/authController.js";
+import validate from "../middlewares/validationMiddleware.js";
+import * as authSchemas from "../validation/authSchemas.js";
+import protectedRoutes from "../middlewares/protectedRoutes.js";
+
 const router = express.Router();
-const authController = require("../controllers/authController");
-const validate = require("../middlewares/validationMiddleware");
-const authSchemas = require("../validation/authSchemas");
-const protectedRoutes = require("../middlewares/protectedRoutes");
 
 router.post("/signup", validate(authSchemas.createUser), authController.signup);
 
@@ -34,4 +35,6 @@ router.post(
   authController.resetPassword
 );
 
-module.exports = router;
+router.post("/google", authController.googleAuth);
+
+export default router;

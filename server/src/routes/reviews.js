@@ -1,9 +1,9 @@
-const express = require("express");
+import express from "express";
 
-const reviewsController = require("../controllers/reviewController");
-const protectedRoutes = require("../middlewares/protectedRoutes");
-const reviewValidation = require("../validation/reviewSchema");
-const validation = require("../middlewares/validationMiddleware");
+import * as reviewsController from "../controllers/reviewController.js";
+import protectedRoutes from "../middlewares/protectedRoutes.js";
+import * as reviewValidation from "../validation/reviewSchema.js";
+import validation from "../middlewares/validationMiddleware.js";
 
 const router = express.Router();
 
@@ -25,4 +25,4 @@ router.put(
 
 router.delete("/:id", reviewsController.deleteReview);
 
-module.exports = router;
+export default router;

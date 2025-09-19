@@ -1,9 +1,10 @@
-const express = require("express");
+import express from "express";
 
-const roomController = require("../controllers/roomController");
-const protectedRoutes = require("../middlewares/protectedRoutes");
-const validate = require("../middlewares/validationMiddleware");
-const { roomSchema } = require("../validation/roomsSchemas");
+import * as roomController from "../controllers/roomController.js";
+import protectedRoutes from "../middlewares/protectedRoutes.js";
+import validate from "../middlewares/validationMiddleware.js";
+import { roomSchema } from "../validation/roomsSchemas.js";
+import restrictTo from "../utils/restrictTo.js";
 
 const router = express.Router();
 
@@ -21,4 +22,4 @@ router.put("/:id", validate(roomSchema.partial()), roomController.updateRoom);
 
 router.delete("/:id", roomController.deleteRoom);
 
-module.exports = router;
+export default router;

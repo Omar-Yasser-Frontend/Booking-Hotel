@@ -1,6 +1,6 @@
-const { ZodError } = require("zod");
-const AppError = require("../core/AppError");
-const ResponseFormatter = require("../core/ResponseFormatter");
+import { ZodError } from "zod";
+import AppError from "../core/AppError.js";
+import ResponseFormatter from "../core/ResponseFormatter.js";
 
 const handleCastErrorDB = (err) => {
   const message = `Invalid ${err.path}: ${err.value}.`;
@@ -60,7 +60,7 @@ function handleZodError(err) {
 const TokenExpiration = (err) =>
   new AppError("Session expired please login again", 401);
 
-module.exports = (err, req, res, next) => {
+export default (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || "error";
   if (process.env.NODE_ENV === "development") {

@@ -1,8 +1,8 @@
-const AuthService = require("../services/authService");
+import AuthService from "../services/authService.js";
 
 const authService = new AuthService();
 
-module.exports = async (decoded) => {
+export default async (decoded) => {
   const user = await authService.findById(decoded.userId, "User");
 
   return user;

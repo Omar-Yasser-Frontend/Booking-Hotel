@@ -5,7 +5,7 @@ const cookieConfig = {
   maxAge: 1000 * 60 * 60 * 24 * 30,
 };
 
-module.exports = (res, name, data, additionalConfig = {}) => {
+export default (res, name, data, additionalConfig = {}) => {
   res.cookie(name, data, {
     ...cookieConfig,
     ...additionalConfig,

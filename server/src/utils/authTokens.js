@@ -1,7 +1,7 @@
-const sendCookie = require("../utils/sendCookie");
-const createJWTToken = require("../utils/createJWTToken");
+import sendCookie from "../utils/sendCookie.js";
+import createJWTToken from "../utils/createJWTToken.js";
 
-module.exports = (res, user) => {
+export default (res, user) => {
   sendCookie(
     res,
     "refreshToken",

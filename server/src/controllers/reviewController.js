@@ -1,9 +1,9 @@
-const ResponseFormatter = require("../core/ResponseFormatter");
-const ReviewsService = require("../services/reviewsService");
+import ResponseFormatter from "../core/ResponseFormatter.js";
+import ReviewsService from "../services/reviewsService.js";
 
 const reviewsService = new ReviewsService();
 
-exports.getReviews = async (req, res) => {
+export const getReviews = async (req, res) => {
   req.query.page = +req.query.page;
   const reviews = await reviewsService.getReveiwsPaginate(req.params.roomId, {
     ...req.query,
@@ -18,7 +18,7 @@ exports.getReviews = async (req, res) => {
   );
 };
 
-exports.updateReview = async (req, res) => {
+export const updateReview = async (req, res) => {
   const review = await reviewsService.findOneAndUpdate(
     { _id: req.params.id, userId: req.user._id },
     req.body,
@@ -28,7 +28,7 @@ exports.updateReview = async (req, res) => {
   ResponseFormatter.success(res, { review }, null, 200);
 };
 
-exports.deleteReview = async (req, res) => {
+export const deleteReview = async (req, res) => {
   await reviewsService.deleteOne(
     { _id: req.params.id, userId: req.user._id },
     req.body,
@@ -38,7 +38,7 @@ exports.deleteReview = async (req, res) => {
   ResponseFormatter.success(res, null, null, 204);
 };
 
-exports.createReview = async (req, res) => {
+export const createReview = async (req, res) => {
   const review = await reviewsService.create({
     ...req.body,
     userId: req.user._id,

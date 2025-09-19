@@ -1,6 +1,6 @@
-const BaseService = require("../core/base/baseService");
-const ReviewsRepository = require("../repositories/ReviewsRepository");
-const APIFeature = require("../utils/apiFeatures");
+import BaseService from "../core/base/baseService.js";
+import ReviewsRepository from "../repositories/ReviewsRepository.js";
+import APIFeature from "../utils/apiFeatures.js";
 
 class ReviewsService extends BaseService {
   constructor() {
@@ -17,4 +17,4 @@ class ReviewsService extends BaseService {
   }
 }
 
-module.exports = ReviewsService;
+export default ReviewsService;

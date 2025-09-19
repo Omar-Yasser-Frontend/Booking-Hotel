@@ -1,6 +1,6 @@
-const { default: z } = require("zod");
+import z from "zod";
 
-exports.review = z
+export const review = z
   .object({
     roomId: z.string().length(24, "Invalid room id"),
     rating: z.number().min(1).max(5),
@@ -8,7 +8,7 @@ exports.review = z
   })
   .strict();
 
-exports.updateReview = z
+export const updateReview = z
   .object({
     rating: z.number().min(1).max(5),
     comment: z.string().max(1000),

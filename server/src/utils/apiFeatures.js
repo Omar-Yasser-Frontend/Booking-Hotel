@@ -1,4 +1,4 @@
-const handleNestedFilter = require("./handleNestedFilter");
+import handleNestedFilter from "./handleNestedFilter.js";
 
 class APIFeatures {
   constructor(query, queryString) {
@@ -56,4 +56,4 @@ class APIFeatures {
     return this.query.then(res, rej);
   }
 }
-module.exports = APIFeatures;
+export default APIFeatures;

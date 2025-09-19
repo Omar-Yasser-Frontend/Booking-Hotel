@@ -1,18 +1,20 @@
-const ResponseFormatter = require("../core/ResponseFormatter");
-const formatUserResponseData = require("../utils/formatUserResponseData");
-const cloudinary = require("cloudinary").v2;
-const UserService = require("../services/userService");
+import ResponseFormatter from "../core/ResponseFormatter.js";
+import formatUserResponseData from "../utils/formatUserResponseData.js";
+import cloudinary from "cloudinary";
+import UserService from "../services/userService.js";
+
+const cloundinaryV2 = cloudinary.v2;
 
 const userService = new UserService();
 
-exports.getUser = async (req, res) =>
+export const getUser = async (req, res) =>
   ResponseFormatter.success(res, formatUserResponseData(req.user.toObject()));
 
-exports.userUploadImage = async (req, res) => {
+export const userUploadImage = async (req, res) => {
   const fileBuffer = req.file.buffer;
 
   const uploadResult = await new Promise((res, rej) => {
-    cloudinary.uploader
+    cloundinaryV2.uploader
       .upload_stream({}, (error, result) => {
         if (error) rej(error);
         else res(result);
@@ -27,7 +29,7 @@ exports.userUploadImage = async (req, res) => {
   ResponseFormatter.success(res, { user: userUpdated }, null, 201);
 };
 
-exports.deleteUser = async (req, res) => {
+export const deleteUser = async (req, res) => {
   const user = req.user;
   user.deactiveate = true;
 

@@ -1,8 +1,9 @@
-const express = require("express");
-const userController = require("../controllers/userController");
-const protectedRoutes = require("../middlewares/protectedRoutes");
-const multer = require("multer");
-const imageSanitizeAndTypeValidation = require("../middlewares/imageSanitizeAndTypeValidation");
+import express from "express";
+import * as userController from "../controllers/userController.js";
+import protectedRoutes from "../middlewares/protectedRoutes.js";
+import multer from "multer";
+import imageSanitizeAndTypeValidation from "../middlewares/imageSanitizeAndTypeValidation.js";
+
 const storage = multer.memoryStorage();
 const upload = multer({
   storage,
@@ -24,4 +25,4 @@ router.post(
 
 router.delete("/delete-account", userController.deleteUser);
 
-module.exports = router;
+export default router;

@@ -1,23 +1,23 @@
-const express = require("express");
-const morgan = require("morgan");
-const helmet = require("helmet");
-const cors = require("cors");
-const mongoSanititze = require("express-mongo-sanitize");
-const cookieParser = require("cookie-parser");
-const rateLimit = require("express-rate-limit");
-const hpp = require("hpp");
+import express from "express";
+import morgan from "morgan";
+import helmet from "helmet";
+import cors from "cors";
+import mongoSanititze from "express-mongo-sanitize";
+import cookieParser from "cookie-parser";
+import rateLimit from "express-rate-limit";
+import hpp from "hpp";
 
-const roomRouter = require("./routes/rooms");
-const reviewsRouter = require("./routes/reviews");
-const wishlistRouter = require("./routes/wishlist");
-const userRouter = require("./routes/user");
-const authRouter = require("./routes/auth");
-const paymentRouter = require("./routes/payment");
-const webhookRouter = require("./routes/webhook");
-const reservationRouter = require("./routes/reservations");
-const notFoundError = require("./middlewares/notFoundError");
-const ResponseFormatter = require("./core/ResponseFormatter");
-const globalErrorHandler = require("./middlewares/globalErrorHandler");
+import roomRouter from "./routes/rooms.js";
+import reviewsRouter from "./routes/reviews.js";
+import wishlistRouter from "./routes/wishlist.js";
+import userRouter from "./routes/user.js";
+import authRouter from "./routes/auth.js";
+import paymentRouter from "./routes/payment.js";
+import webhookRouter from "./routes/webhook.js";
+import reservationRouter from "./routes/reservations.js";
+import notFoundError from "./middlewares/notFoundError.js";
+import ResponseFormatter from "./core/ResponseFormatter.js";
+import globalErrorHandler from "./middlewares/globalErrorHandler.js";
 
 const app = express();
 
@@ -84,4 +84,4 @@ app.all(/(.*)/, notFoundError);
 app.use(globalErrorHandler);
 
 // for testing and seperating express configuration from server
-module.exports = app;
+export default app;

@@ -1,6 +1,6 @@
-const BaseService = require("../core/base/baseService");
-const RoomRepository = require("../repositories/roomRepository");
-const APIFeature = require("../utils/apiFeatures");
+import BaseService from "../core/base/baseService.js";
+import RoomRepository from "../repositories/roomRepository.js";
+import APIFeature from "../utils/apiFeatures.js";
 
 class RoomService extends BaseService {
   constructor() {
@@ -32,4 +32,4 @@ class RoomService extends BaseService {
   }
 }
 
-module.exports = RoomService;
+export default RoomService;

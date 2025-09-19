@@ -1,5 +1,5 @@
-const BaseService = require("../core/base/baseService");
-const WishlistRepository = require("../repositories/wishlistRepository");
+import BaseService from "../core/base/baseService.js";
+import WishlistRepository from "../repositories/wishlistRepository.js";
 
 class WishlistService extends BaseService {
   constructor() {
@@ -13,4 +13,4 @@ class WishlistService extends BaseService {
   }
 }
 
-module.exports = WishlistService;
+export default WishlistService;

@@ -1,13 +1,16 @@
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const RoomService = require("../services/roomService");
-const ResponseFormatter = require("../core/ResponseFormatter");
-const AppError = require("../core/AppError");
-const { differenceInDays } = require("date-fns");
-const ReservationService = require("../services/reservationService");
+import Stripe from "stripe";
+import RoomService from "../services/roomService.js";
+import ResponseFormatter from "../core/ResponseFormatter.js";
+import AppError from "../core/AppError.js";
+import { differenceInDays } from "date-fns";
+import ReservationService from "../services/reservationService.js";
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const roomService = new RoomService();
 const reservationService = new ReservationService();
-exports.createPaymentIntent = async (req, res) => {
+
+export const createPaymentIntent = async (req, res) => {
   const { roomId, checkOut, checkIn } = req.body;
   if (
     await reservationService.checkReservationAvailability(

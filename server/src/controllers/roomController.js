@@ -1,9 +1,9 @@
-const RoomService = require("../services/roomService");
-const ResponseFormatter = require("../core/ResponseFormatter");
+import RoomService from "../services/roomService.js";
+import ResponseFormatter from "../core/ResponseFormatter.js";
 
 const roomService = new RoomService();
 
-exports.getRooms = async (req, res) => {
+export const getRooms = async (req, res) => {
   const filter = await roomService.roomsFilterQuery(req.query);
 
   ResponseFormatter.success(res, {
@@ -12,13 +12,13 @@ exports.getRooms = async (req, res) => {
   });
 };
 
-exports.getRoomById = async (req, res) => {
+export const getRoomById = async (req, res) => {
   const room = await roomService.findById(req.params.id, "Room");
 
   ResponseFormatter.success(res, { room });
 };
 
-exports.createRoom = async (req, res) => {
+export const createRoom = async (req, res) => {
   console.log("Failed Here");
   const room = await roomService.create({
     ...req.data,
@@ -28,7 +28,7 @@ exports.createRoom = async (req, res) => {
   ResponseFormatter.success(res, { room });
 };
 
-exports.updateRoom = async (req, res) => {
+export const updateRoom = async (req, res) => {
   const updatedRoom = await roomService.findOneAndUpdate(
     { _id: req.params.id, userId: req.user._id },
     req.body,
@@ -38,7 +38,7 @@ exports.updateRoom = async (req, res) => {
   ResponseFormatter.success(res, { room: updatedRoom });
 };
 
-exports.deleteRoom = async (req, res) => {
+export const deleteRoom = async (req, res) => {
   await roomService.deleteOne(
     {
       _id: req.params.id,
@@ -50,7 +50,7 @@ exports.deleteRoom = async (req, res) => {
   ResponseFormatter.success(res, null, null, 204);
 };
 
-exports.searchRoom = async (req, res) => {
+export const searchRoom = async (req, res) => {
   const filter = await roomService.searchRooms(req.query.search, req.query);
 
   ResponseFormatter.success(res, {

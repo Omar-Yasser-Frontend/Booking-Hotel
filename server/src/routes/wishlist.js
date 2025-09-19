@@ -1,8 +1,8 @@
-const express = require("express");
-const wishlistController = require("../controllers/wishlistController");
-const protectedRoutes = require("../middlewares/protectedRoutes");
-const validation = require("../middlewares/validationMiddleware");
-const wishlistSchemas = require("../validation/wishlistSchemas");
+import express from "express";
+import * as wishlistController from "../controllers/wishlistController.js";
+import protectedRoutes from "../middlewares/protectedRoutes.js";
+import validation from "../middlewares/validationMiddleware.js";
+import * as wishlistSchemas from "../validation/wishlistSchemas.js";
 
 const router = express.Router();
 
@@ -18,4 +18,4 @@ router.post(
 
 router.delete("/:id", wishlistController.removeWishlist);
 
-module.exports = router;
+export default router;

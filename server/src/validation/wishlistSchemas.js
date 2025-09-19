@@ -1,5 +1,5 @@
-const { default: z } = require("zod");
+import z from "zod";
 
-exports.wishlist = z.object({
+export const wishlist = z.object({
   roomId: z.string().length(24, "Invalid Schema"),
 });

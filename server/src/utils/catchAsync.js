@@ -1,4 +1,4 @@
-module.exports = function (callback) {
+export default function (callback) {
   return async (req, res, next) => {
     try {
       await callback(req, res);
@@ -7,4 +7,4 @@ module.exports = function (callback) {
       next(err);
     }
   };
-};
+}

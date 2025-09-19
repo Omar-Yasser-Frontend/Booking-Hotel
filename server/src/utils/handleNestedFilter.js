@@ -18,4 +18,4 @@ const handleNestedFilter = (queryString) => {
   return queryString;
 };
 
-module.exports = handleNestedFilter;
+export default handleNestedFilter;

@@ -1,9 +1,9 @@
-const jwt = require("jsonwebtoken");
-const AppError = require("../core/AppError");
-const getUserProtectedRoutes = require("../utils/getUserProtectedRoutes");
-const createJWTToken = require("../utils/createJWTToken");
+import jwt from "jsonwebtoken";
+import AppError from "../core/AppError.js";
+import getUserProtectedRoutes from "../utils/getUserProtectedRoutes.js";
+import createJWTToken from "../utils/createJWTToken.js";
 
-module.exports = async (req, res, next) => {
+export default async (req, res, next) => {
   const accessToken = req.headers["authorization"]?.split(" ")[1];
   const refreshToken = req.cookies["refreshToken"];
 

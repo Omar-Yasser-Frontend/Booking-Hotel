@@ -1,5 +1,5 @@
-const bcrypt = require("bcryptjs");
-const mongoose = require("mongoose");
+import bcrypt from "bcryptjs";
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       maxLength: [200, "email is too short"],
     },
-    password: { type: String, required: [true, "Password is required"] },
+    password: { type: String },
     passwordUpdatedAt: Date,
     isActive: { type: Boolean, default: false },
     confirmationToken: {
@@ -66,4 +66,4 @@ userSchema.pre("save", function (next) {
 
 const User = mongoose.model("user", userSchema);
 
-module.exports = User;
+export default User;

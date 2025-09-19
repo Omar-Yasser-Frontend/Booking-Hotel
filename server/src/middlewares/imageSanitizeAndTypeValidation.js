@@ -1,12 +1,12 @@
-const fileType = require("file-type");
-const sharp = require("sharp");
-const AppError = require("../core/AppError");
+import { fileTypeFromBuffer } from "file-type";
+import sharp from "sharp";
+import AppError from "../core/AppError.js";
 
-module.exports = async (req, res, next) => {
+export default async (req, res, next) => {
   if (!req.file || !req.file.buffer)
     throw new AppError("No file uploaded", 400);
 
-  const type = await fileType.fileTypeFromBuffer(req.file.buffer);
+  const type = await fileTypeFromBuffer(req.file.buffer);
   if (!type) throw new AppError("Unsupported or unknown file type", 400);
 
   if (!type.mime.startsWith("image/"))

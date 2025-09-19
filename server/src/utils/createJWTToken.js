@@ -1,6 +1,6 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 
-module.exports = (data, expiryDate = "90d") => {
+export default (data, expiryDate = "90d") => {
   const token = jwt.sign(data, process.env.JWT_SECRET, {
     expiresIn: expiryDate,
   });

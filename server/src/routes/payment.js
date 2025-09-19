@@ -1,9 +1,10 @@
-const express = require("express");
-const paymentController = require("../controllers/paymentController");
-const protectedRoutes = require("../middlewares/protectedRoutes");
+import express from "express";
+import * as paymentController from "../controllers/paymentController.js";
+import protectedRoutes from "../middlewares/protectedRoutes.js";
+import validate from "../middlewares/validationMiddleware.js";
+import * as reservationSchemas from "../validation/reservationSchema.js";
+
 const router = express.Router();
-const validate = require("../middlewares/validationMiddleware");
-const reservationSchemas = require("../validation/resesrcationSchema");
 
 router.use(protectedRoutes);
 
@@ -13,4 +14,4 @@ router.post(
   paymentController.createPaymentIntent
 );
 
-module.exports = router;
+export default router;

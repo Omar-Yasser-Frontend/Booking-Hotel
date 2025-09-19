@@ -1,6 +1,6 @@
-const AppError = require("../core/AppError");
-const BaseService = require("../core/base/baseService");
-const AuthRepository = require("../repositories/AuthRepository");
+import AppError from "../core/AppError.js";
+import BaseService from "../core/base/baseService.js";
+import AuthRepository from "../repositories/AuthRepository.js";
 
 class AuthService extends BaseService {
   constructor() {
@@ -19,4 +19,4 @@ class AuthService extends BaseService {
   }
 }
 
-module.exports = AuthService;
+export default AuthService;

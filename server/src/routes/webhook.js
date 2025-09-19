@@ -1,5 +1,6 @@
-const express = require("express");
-const webhookController = require("../controllers/webhookController");
+import express from "express";
+import * as webhookController from "../controllers/webhookController.js";
+
 const router = express.Router();
 
 router.post(
@@ -8,4 +9,4 @@ router.post(
   webhookController.webhookHandler
 );
 
-module.exports = router;
+export default router;

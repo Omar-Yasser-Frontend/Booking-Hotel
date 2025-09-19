@@ -1,6 +1,6 @@
-const z = require("zod");
+import z from "zod";
 
-exports.roomSchema = z
+export const roomSchema = z
   .object({
     name: z.string().trim().min(3).max(100),
     description: z.string().trim().min(10).max(1000),

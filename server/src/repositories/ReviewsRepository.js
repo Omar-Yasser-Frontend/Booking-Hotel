@@ -1,5 +1,5 @@
-const BaseRepository = require("../core/base/baseRepository");
-const Reviews = require("../models/reviews");
+import BaseRepository from "../core/base/baseRepository.js";
+import Reviews from "../models/reviews.js";
 
 class ReviewsRepository extends BaseRepository {
   constructor() {
@@ -7,4 +7,4 @@ class ReviewsRepository extends BaseRepository {
   }
 }
 
-module.exports = ReviewsRepository;
+export default ReviewsRepository;

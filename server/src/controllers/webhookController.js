@@ -1,5 +1,7 @@
-const ReservationService = require("../services/reservationService");
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+import ReservationService from "../services/reservationService.js";
+import Stripe from "stripe";
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const endpointSecret = process.env.WEBHOOK_SECRET_ENDPOINT;
 const reservationService = new ReservationService();
@@ -39,7 +41,7 @@ async function handlePaymentIntentSucceeded(paymentIntent) {
   }
 }
 
-exports.webhookHandler = async (request, response) => {
+export const webhookHandler = async (request, response) => {
   const sig = request.headers["stripe-signature"];
   let event;
 

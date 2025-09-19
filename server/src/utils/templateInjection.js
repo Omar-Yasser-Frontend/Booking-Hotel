@@ -1,6 +1,6 @@
-const xss = require("xss");
+import xss from "xss";
 
-module.exports = (template, injectionObject) => {
+export default (template, injectionObject) => {
   for (const key in injectionObject) {
     template = template.replaceAll(key, xss(injectionObject[key]));
   }

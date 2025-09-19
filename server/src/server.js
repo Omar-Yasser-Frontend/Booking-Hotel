@@ -1,5 +1,6 @@
-require("dotenv").config();
-const connectDB = require("./utils/db");
+import "dotenv/config.js";
+import connectDB from "./utils/db.js";
+import app from "./app.js";
 
 process.on("uncaughtException", (err) => {
   console.log("UNHANDLED EXCEPTION 🚀!");
@@ -8,8 +9,6 @@ process.on("uncaughtException", (err) => {
 
   process.exit(1);
 });
-
-const app = require("./app");
 
 connectDB();
 

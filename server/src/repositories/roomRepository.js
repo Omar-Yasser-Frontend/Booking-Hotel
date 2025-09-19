@@ -1,5 +1,5 @@
-const BaseRepository = require("../core/base/baseRepository");
-const Room = require("../models/room");
+import BaseRepository from "../core/base/baseRepository.js";
+import Room from "../models/room.js";
 
 class RoomRepository extends BaseRepository {
   constructor() {
@@ -7,4 +7,4 @@ class RoomRepository extends BaseRepository {
   }
 }
 
-module.exports = RoomRepository;
+export default RoomRepository;

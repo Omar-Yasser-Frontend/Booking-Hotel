@@ -1,4 +1,4 @@
-const AppError = require("../AppError");
+import AppError from "../AppError.js";
 
 class BaseService {
   constructor(repository) {
@@ -141,4 +141,4 @@ class BaseService {
   }
 }
 
-module.exports = BaseService;
+export default BaseService;
