@@ -5,10 +5,10 @@ class BaseService {
     this.repo = repository;
   }
 
-  async find(filter = {}, entityName = "Item", allowEmpty = true) {
+  async find(filter = {}, entityName = "Item", allowEmpty = false) {
     const result = await this.repo.find(filter);
 
-    if (allowEmpty && !result.length) {
+    if (!allowEmpty && !result.length) {
       throw new AppError(`${entityName} Not Found`, 404);
     }
 
@@ -46,10 +46,10 @@ class BaseService {
     return update;
   }
 
-  async findById(id, entityName = "Item", allowEmpty = true) {
+  async findById(id, entityName = "Item", allowEmpty = false) {
     const result = await this.repo.findById(id);
 
-    if (allowEmpty && !result) {
+    if (!allowEmpty && !result) {
       throw new AppError(`${entityName} Not Found`, 404);
     }
 
@@ -81,10 +81,10 @@ class BaseService {
     return deleted;
   }
 
-  async findOne(filter = {}, entityName = "Item", allowEmpty = true) {
+  async findOne(filter = {}, entityName = "Item", allowEmpty = false) {
     const result = await this.repo.findOne(filter);
 
-    if (allowEmpty && !result) {
+    if (!allowEmpty && !result) {
       throw new AppError(`${entityName} Not Found`, 404);
     }
 

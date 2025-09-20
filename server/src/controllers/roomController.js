@@ -19,9 +19,8 @@ export const getRoomById = async (req, res) => {
 };
 
 export const createRoom = async (req, res) => {
-  console.log("Failed Here");
   const room = await roomService.create({
-    ...req.data,
+    ...req.body,
     userId: req.user._id,
   });
 

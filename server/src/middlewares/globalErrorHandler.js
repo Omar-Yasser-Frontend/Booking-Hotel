@@ -17,11 +17,10 @@ const handleValdationErrorDB = (err) => {
 const handleDuplicateFieldDB = (err) => {
   const value = err.keyValue.name;
   const message = `Duplicate Fields Value: ${value}. Please use another value`;
-  return new AppError(message, 400);
+  return new AppError(message, 403);
 };
 
 const sendErrorDev = (err, res) => {
-  console.error("ERROR 💥", err);
   res.status(err.statusCode).json({
     status: err.status,
     error: err,
@@ -31,20 +30,16 @@ const sendErrorDev = (err, res) => {
 };
 
 const sendErrorProd = (err, res) => {
-  // Operational, trusted error: send message to client
-  console.error("ERROR 💥", err);
+  console.log(err);
   if (err?.isOperational) {
     if (err.statusCode < 500) {
       return ResponseFormatter.fail(res, err.message, null, err.statusCode);
     }
 
     return ResponseFormatter.error(res, err.message, err.statusCode, null);
-
-    // Programming or other unknown error: don't leak error details
   } else {
-    // 1) Log error
+    console.error("ERROR 💥", err);
 
-    // 2) Send generic message
     return ResponseFormatter.error(res, "Something went wrong", 500);
   }
 };
@@ -66,8 +61,6 @@ export default (err, req, res, next) => {
   if (process.env.NODE_ENV === "development") {
     sendErrorDev(err, res);
   } else {
-    console.log(err);
-
     if (err.name === "CastError") err = handleCastErrorDB(err);
     if (err.code === 11000) err = handleDuplicateFieldDB(err);
     if (err.name === "ValidationError") err = handleValdationErrorDB(err);
