@@ -11,7 +11,12 @@ export const roomSchema = z
       guests: z.number().min(1).max(100),
       rooms: z.number().min(1).max(100),
     }),
-    extras: z.array(z.string().trim().max(30)),
+    extras: z.array(
+      z.object({
+        name: z.string().trim().max(30),
+        price: z.number().min(0),
+      })
+    ),
     location: z.object({
       country: z.string().trim().max(25),
       city: z.string().trim().max(25),
