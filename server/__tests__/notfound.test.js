@@ -1,5 +1,6 @@
-const request = require("supertest");
-const app = require("../src/app");
+import "dotenv/config.js";
+import request from "supertest";
+import app from "../src/app";
 
 describe("Testing Not found route", () => {
   test("checking not found route message and status", async () => {

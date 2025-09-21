@@ -1,8 +1,8 @@
-const { default: mongoose } = require("mongoose");
-const BaseRepository = require("../src/core/base/baseRepository");
-require("dotenv").config();
-const BaseService = require("../src/core/base/baseService");
-const AppError = require("../src/core/AppError");
+import mongoose from "mongoose";
+import BaseRepository from "../src/core/base/baseRepository";
+import "dotenv/config.js";
+import BaseService from "../src/core/base/baseService";
+import AppError from "../src/core/AppError";
 
 let TestModel;
 let testUsers;
@@ -17,7 +17,6 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await mongoose.disconnect();
-  jest.restoreAllMocks();
 });
 
 afterEach(async () => {
@@ -199,7 +198,6 @@ describe("testing findByIdAndUpdate method", () => {
     const student = await baseService.findByIdAndUpdate(id, { name }, "users");
     const allStudents = await baseService.find();
 
-
     allStudents.forEach((std) => {
       if (std._id.toString() === student._id.toString()) {
         expect(std.name).toBe(student.name);
@@ -236,7 +234,6 @@ describe("testing findOneAndUpdate method", () => {
       "users"
     );
     const allStudents = await baseService.find();
-
 
     allStudents.forEach((std) => {
       if (std._id.toString() === student._id.toString()) {

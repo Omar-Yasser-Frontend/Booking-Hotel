@@ -1,5 +1,7 @@
-const z = require("zod");
-const validation = require("../src/middlewares/validationMiddleware");
+import "dotenv/config.js";
+import { jest } from "@jest/globals";
+import z from "zod";
+import validation from "../src/middlewares/validationMiddleware";
 
 const testSchema = z.object({
   name: z.string().trim(),
@@ -8,6 +10,7 @@ const testSchema = z.object({
 describe("testing validation middleware", () => {
   const res = {};
   const next = jest.fn();
+
   it("should call next", async () => {
     const req = { body: { name: "test name" } };
     await validation(testSchema)(req, res, next);

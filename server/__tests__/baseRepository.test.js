@@ -1,6 +1,6 @@
-const { default: mongoose } = require("mongoose");
-const BaseRepository = require("../src/core/base/baseRepository");
-require("dotenv").config();
+import "dotenv/config.js";
+import mongoose from "mongoose";
+import BaseRepository from "../src/core/base/baseRepository";
 
 let TestModel;
 let testUsers;
@@ -13,7 +13,6 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await mongoose.disconnect();
-  jest.restoreAllMocks();
 });
 
 describe("testing BaseRepository Methods", () => {
