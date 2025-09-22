@@ -1,15 +1,21 @@
-jest.mock("jsonwebtoken", () => ({
-  verify: () => ({
-    user: { userId: "this is test id" },
-  }),
+import "dotenv/config.js";
+import request from "supertest";
+import { jest } from "@jest/globals";
+
+jest.unstable_mockModule("jsonwebtoken", () => ({
+  default: {
+    verify: () => ({
+      userId: "68ccab3bb980644d658940d4",
+      email: "craft14716@gmail.com",
+      iat: 1758244380,
+      exp: 1766020380,
+    }),
+  },
 }));
 
-const Room = require("../../src/models/room");
-
-require("dotenv").config();
-const request = require("supertest");
-const app = require("../../src/app");
-const mongoose = require("mongoose");
+const mongoose = (await import("mongoose")).default;
+const Room = (await import("../../src/models/room.js")).default;
+const app = (await import("../../src/app.js")).default;
 
 beforeAll(async () => {
   await mongoose.connect(process.env.MONGODB_URI);
@@ -20,7 +26,7 @@ afterAll(async () => {
   jest.restoreAllMocks();
 });
 
-describe("Deleting Rooms", () => {
+describe("Updating Rooms", () => {
   it("Should not authorize/find room with this data", async () => {
     const res = await request(app)
       .put("/api/v1/room/606fef600398ff606fef6003")

@@ -1,10 +1,8 @@
-require("dotenv").config();
-const request = require("supertest");
-const app = require("../../src/app");
-const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
-
-jest.mock("jsonwebtoken");
+import "dotenv/config.js";
+import request from "supertest";
+import app from "../../src/app";
+import mongoose from "mongoose";
+import { jest } from "@jest/globals";
 
 beforeAll(async () => {
   await mongoose.connect(process.env.MONGODB_URI);
