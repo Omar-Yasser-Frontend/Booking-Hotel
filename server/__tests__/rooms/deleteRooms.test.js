@@ -2,12 +2,6 @@ import "dotenv/config.js";
 import request from "supertest";
 import { jest } from "@jest/globals";
 
-// require("dotenv").config();
-// const request = require("supertest");
-// const app = require("../../src/app");
-// const mongoose = require("mongoose");
-// const jwt = require("jsonwebtoken");
-
 jest.unstable_mockModule("jsonwebtoken", () => ({
   default: {
     verify: () => ({
