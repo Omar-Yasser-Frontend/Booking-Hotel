@@ -8,7 +8,7 @@ export const getReservations = async (req, res) => {
     "Reservation"
   );
 
-  ResponseFormatter.success(res, userReservations, null, 200);
+  ResponseFormatter.success(res, { reservations: userReservations }, null, 200);
 };
 
 export const cancelReservation = async (req, res) => {
@@ -17,5 +17,5 @@ export const cancelReservation = async (req, res) => {
     req.user._id
   );
 
-  ResponseFormatter.success(res, reservation);
+  ResponseFormatter.success(res, { reservation });
 };
