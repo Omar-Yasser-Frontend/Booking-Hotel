@@ -6,7 +6,7 @@ const wishlistService = new WishlistService();
 export const getWishlists = async (req, res) => {
   const wishlists = await wishlistService.findAndPopulateRooms(req.user._id);
 
-  ResponseFormatter.success(res, { wishlists }, null, 201);
+  ResponseFormatter.success(res, { wishlists }, null, 200);
 };
 
 export const addWishlist = async (req, res) => {
