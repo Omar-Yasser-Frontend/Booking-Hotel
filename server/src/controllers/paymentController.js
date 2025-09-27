@@ -55,7 +55,5 @@ export const createPaymentIntent = async (req, res) => {
     metadata,
   });
 
-  console.log(metadata);
-
   ResponseFormatter.success(res, { client_secret: intent.client_secret });
 };
