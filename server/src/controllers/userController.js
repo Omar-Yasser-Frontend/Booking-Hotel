@@ -8,7 +8,9 @@ const cloundinaryV2 = cloudinary.v2;
 const userService = new UserService();
 
 export const getUser = async (req, res) =>
-  ResponseFormatter.success(res, formatUserResponseData(req.user.toObject()));
+  ResponseFormatter.success(res, {
+    user: formatUserResponseData(req.user.toObject()),
+  });
 
 export const userUploadImage = async (req, res) => {
   const fileBuffer = req.file.buffer;
