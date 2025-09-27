@@ -17,8 +17,6 @@ jest.unstable_mockModule("../../src/utils/getUserProtectedRoutes.js", () => ({
   default: jest.fn(),
 }));
 
-jest.unstable_mockModule;
-
 const app = (await import("../../src/app.js")).default;
 const mongoose = (await import("mongoose")).default;
 const getUserProtectedRoute = (
