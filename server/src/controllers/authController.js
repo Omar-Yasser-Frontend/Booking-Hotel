@@ -13,8 +13,6 @@ import getGoogleUserInfo from "../utils/googleOAuthClient.js";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
-// console.log(import.meta.dirname);
-
 const __dirname = path.dirname(__filename);
 
 const authService = new AuthService();
@@ -35,8 +33,10 @@ export const login = async (req, res) => {
   if (!user.isActive) {
     const { token, hashedToken } = cryptoToken();
 
-    user.confirmationToken.token = hashedToken;
-    user.confirmationToken.expiresAt = 60 * 15 * 1000 + Date.now();
+    user.confirmationToken = {
+      token: hashedToken,
+      expiresAt: 60 * 15 * 1000 + Date.now(),
+    };
     await user.save();
 
     sendEmail(
@@ -92,8 +92,10 @@ export const confirmUser = async (req, res) => {
   const user = await authService.findById(userId, "user");
   const hashToken = crypto.createHash("sha256").update(token).digest("hex");
 
+  if (!user.confirmationToken) throw new AppError("User already verified", 403);
+
   if (user.confirmationToken.expiresAt < Date.now())
-    throw new AppError("Token Expired", 400);
+    throw new AppError("Token Expired", 403);
 
   if (hashToken !== user.confirmationToken.token)
     throw new AppError("Invalid magic link", 403);
@@ -109,8 +111,15 @@ export const confirmUser = async (req, res) => {
 
 export const forgotPassword = async (req, res) => {
   const { email } = req.body;
-  const user = await authService.findOne({ email }, "user");
+  const user = await authService.findOne({ email }, "user", true);
   const { token, hashedToken } = cryptoToken();
+
+  if (!user)
+    return ResponseFormatter.success(
+      res,
+      null,
+      "Check your email to reset password"
+    );
 
   user.resetPassword.token = hashedToken;
   user.resetPassword.expiresAt = Date.now() + 60 * 15 * 1000;
@@ -131,11 +140,13 @@ export const forgotPassword = async (req, res) => {
 
 export const resetPassword = async (req, res) => {
   const { token, userId, password } = req.body;
-  const user = await authService.findById(userId, "user");
+  const user = await authService.findById(userId, "user", true);
   const hashToken = crypto.createHash("sha256").update(token).digest("hex");
 
+  if (!user) throw new AppError("Something went wrong", 500);
+
   if (user.resetPassword.expiresAt < Date.now())
-    throw new AppError("Token Expired", 400);
+    throw new AppError("Token Expired", 403);
 
   if (hashToken !== user.resetPassword.token)
     throw new AppError("Invalid magic link", 403);
@@ -171,7 +182,7 @@ export const logout = (req, res) => {
   ResponseFormatter.success(res, null, null, 204);
 };
 
-export const googleAuth = async (req, res, next) => {
+export const googleAuth = async (req, res) => {
   const {
     email,
     name: username,
@@ -190,5 +201,5 @@ export const googleAuth = async (req, res, next) => {
 
   setAuthTokens(res, user);
 
-  res.json({ user });
+  ResponseFormatter.success(res, { user: formatUserResponseData(user) });
 };
