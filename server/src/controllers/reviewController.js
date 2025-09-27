@@ -31,7 +31,6 @@ export const updateReview = async (req, res) => {
 export const deleteReview = async (req, res) => {
   await reviewsService.deleteOne(
     { _id: req.params.id, userId: req.user._id },
-    req.body,
     "Review"
   );
 
