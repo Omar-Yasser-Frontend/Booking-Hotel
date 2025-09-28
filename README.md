@@ -1,8 +1,13 @@
 # Project Overview
 
+## Disclaimer
+
+This project (**Hotel Booking**) was created **for portfolio and learning purposes only**.  
+It is **not a real booking platform**, and no actual reservations, payments, or services are provided.
+
 ## 🚀 About This Project
 
-This repository represents an ongoing project that I'm actively developing as part of my portfolio. The project is currently in the planning phase, where I'm designing and structuring the features that will be implemented for both frontend and backend components.
+This repository represents an ongoing project that I'm actively developing as part of my portfolio. The project is currently in the frontend building phase, where I'm designing and structuring the features that will be implemented for frontend components.
 
 ## 🛠️ Tech Stack
 
@@ -14,14 +19,12 @@ This repository represents an ongoing project that I'm actively developing as pa
 
 ## 📋 Current Status
 
-**Phase**: Planning & Design
+**Phase**: Design & Frontend
 
-I'm currently in the planning stage, carefully considering the features and functionality that will be implemented. This includes:
+I'm currently in the Frontend stage, carefully considering the features, design and functionality that will be implemented. This includes:
 
 - Feature specification and requirements gathering
 - System architecture design
-- Database schema planning
-- API endpoint design
 - User interface mockups and wireframes
 
 ## 🔄 Repository Updates
