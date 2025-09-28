@@ -4,7 +4,7 @@ export const reservationSchema = z
   .object({
     roomId: z.string().length(24, "Invalid room id"),
     checkIn: z.string().datetime("Invalid Date for checkin"),
-    checkOut: z.string().datetime("Invalid Date for checkin"),
+    checkOut: z.string().datetime("Invalid Date for checkout"),
     extras: z.array(z.string().max(40)),
   })
   .refine(
