@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export default async function (to, subject, html) {
+export default async function sendEmails(to, subject, html) {
   return await transporter.sendMail({
     from: process.env.GMAIL_ACCOUNT,
     to,
