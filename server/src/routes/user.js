@@ -14,15 +14,15 @@ const router = express.Router();
 
 router.use(protectedRoutes);
 
-router.get("/", userController.getUser);
+router.get("/me", userController.getMe);
 
 router.post(
-  "/upload-profile-image",
+  "/me/image",
   upload.single("profileImage"),
   imageSanitizeAndTypeValidation,
-  userController.userUploadImage
+  userController.UploadMeImage
 );
 
-router.delete("/delete-account", userController.deleteUser);
+router.delete("/me", userController.deleteMe);
 
 export default router;

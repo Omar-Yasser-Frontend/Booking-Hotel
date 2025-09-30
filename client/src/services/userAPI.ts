@@ -12,18 +12,18 @@ export interface User {
 }
 
 export async function getUser(): Promise<{ user: User }> {
-  const res = await api.get("/user");
+  const res = await api.get("/user/me");
   return res.data;
 }
 
 export async function uploadProfilePic(
-  data: FormData
+  data: FormData,
 ): Promise<{ user: User }> {
-  const res = await api.post("/user/upload-profile-image", data);
+  const res = await api.post("/user/me/image", data);
   return res.data;
 }
 
 export async function deleteUser(): Promise<null> {
-  const res = await api.delete("/user/delete-account");
+  const res = await api.delete("/user/me");
   return res.data;
 }
