@@ -21,7 +21,7 @@ api.interceptors.request.use(
 
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 api.interceptors.response.use(
@@ -38,10 +38,14 @@ api.interceptors.response.use(
     return data;
   },
   (err: AxiosError<FailResponse>) => {
+    const url = err.config?.url;
+
+    if (url?.includes("/user/me")) return Promise.reject(err);
+
     const message = err.response?.data?.message || "Something went wrong";
     toast.error(message);
     return Promise.reject(message);
-  }
+  },
 );
 
 export default api;
