@@ -6,24 +6,23 @@ export interface User {
   username: string;
   email: string;
   role: string;
-  image?: string;
+  image: string | null;
   createdAt: string;
   updatedAt: string;
 }
 
-export async function getUser(): Promise<{ user: User }> {
+export async function getMe(): Promise<{ user: User }> {
   const res = await api.get("/user/me");
+
   return res.data;
 }
 
-export async function uploadProfilePic(
-  data: FormData,
-): Promise<{ user: User }> {
+export async function uploadMeImage(data: FormData): Promise<{ user: User }> {
   const res = await api.post("/user/me/image", data);
   return res.data;
 }
 
-export async function deleteUser(): Promise<null> {
+export async function deleteMe(): Promise<null> {
   const res = await api.delete("/user/me");
   return res.data;
 }
