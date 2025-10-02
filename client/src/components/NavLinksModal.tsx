@@ -78,13 +78,13 @@ function NavLinksModal() {
         <div className="mt-4 flex flex-col gap-3 p-4">
           <NavLink
             to="/login"
-            className="border-base hover:bg-base focus-visible:ring-accent-500 block w-full rounded-md border-2 bg-transparent px-4 py-3.5 text-center text-base text-sm font-semibold duration-300 hover:text-white focus-visible:ring-2 focus-visible:outline-none"
+            className="border-base hover:bg-base focus-visible:ring-accent-500 block w-full border-2 bg-transparent px-4 py-3.5 text-center text-base text-sm font-semibold duration-300 hover:text-white focus-visible:ring-2 focus-visible:outline-none"
           >
             Login
           </NavLink>
           <NavLink
             to="/signup"
-            className="border-base bg-base focus-visible:ring-accent-500 block w-full rounded-md border-2 px-4 py-3.5 text-center text-sm font-bold text-white duration-300 hover:bg-transparent hover:text-base focus-visible:ring-2 focus-visible:outline-none"
+            className="border-base bg-base focus-visible:ring-accent-500 block w-full border-2 px-4 py-3.5 text-center text-sm font-bold text-white duration-300 hover:bg-transparent hover:text-base focus-visible:ring-2 focus-visible:outline-none"
           >
             Signup
           </NavLink>

@@ -35,8 +35,8 @@ function Profile() {
       </Link>
       <Link to={"/profile"}>
         <img
-          src={user?.image || "/image/default-user.jpg"}
-          className="aspect-square w-9 rounded-full sm:w-10"
+          src={user?.image || "/images/default-user.jpg"}
+          className="aspect-square w-9 rounded-full bg-white sm:w-10"
           alt=""
         />
       </Link>
