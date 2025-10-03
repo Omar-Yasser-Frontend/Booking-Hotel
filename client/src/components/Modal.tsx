@@ -24,7 +24,7 @@ function Modal({
     >
       <div
         ref={ref as React.RefObject<HTMLDivElement>}
-        className="relative min-w-[250px] bg-white"
+        className="relative w-[280px] bg-white"
       >
         {children}
       </div>
