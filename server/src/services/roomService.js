@@ -8,13 +8,18 @@ class RoomService extends BaseService {
   }
 
   async roomsFilterQuery(queryString) {
-    const result = await new APIFeature(this.repo.find(), queryString)
-      .filter()
-      .limitFields()
-      .paginate()
-      .sort();
+    const [rooms, roomsCount] = await Promise.all([
+      await new APIFeature(this.repo.find(), queryString)
+        .filter()
+        .limitFields()
+        .paginate()
+        .sort(),
+      await new APIFeature(this.repo.find(), queryString)
+        .filter()
+        .countDocuments(),
+    ]);
 
-    return result;
+    return { rooms, roomsCount };
   }
 
   async searchRooms(search, queryString) {

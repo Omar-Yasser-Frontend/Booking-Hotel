@@ -7,12 +7,12 @@ const cloundinaryV2 = cloudinary.v2;
 
 const userService = new UserService();
 
-export const getUser = async (req, res) =>
+export const getMe = async (req, res) =>
   ResponseFormatter.success(res, {
     user: formatUserResponseData(req.user.toObject()),
   });
 
-export const userUploadImage = async (req, res) => {
+export const UploadMeImage = async (req, res) => {
   const fileBuffer = req.file.buffer;
 
   const uploadResult = await new Promise((res, rej) => {
@@ -31,7 +31,7 @@ export const userUploadImage = async (req, res) => {
   ResponseFormatter.success(res, { user: userUpdated }, null, 201);
 };
 
-export const deleteUser = async (req, res) => {
+export const deleteMe = async (req, res) => {
   const user = req.user;
   user.deactiveate = true;
 

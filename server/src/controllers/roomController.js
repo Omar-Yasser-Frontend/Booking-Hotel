@@ -4,11 +4,12 @@ import ResponseFormatter from "../core/ResponseFormatter.js";
 const roomService = new RoomService();
 
 export const getRooms = async (req, res) => {
-  const filter = await roomService.roomsFilterQuery(req.query);
+  const { rooms, roomsCount } = await roomService.roomsFilterQuery(req.query);
 
   ResponseFormatter.success(res, {
-    resultLength: filter.length,
-    rooms: filter,
+    resultLength: rooms.filter,
+    roomsCount,
+    rooms,
   });
 };
 
