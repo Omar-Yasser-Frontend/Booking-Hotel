@@ -15,8 +15,8 @@ const handleValdationErrorDB = (err) => {
 };
 
 const handleDuplicateFieldDB = (err) => {
-  const value = err.keyValue.name;
-  const message = `Duplicate Fields Value: ${value}. Please use another value`;
+  const value = Object.keys(err.keyValue)[0];
+  const message = `${value} Already exist`;
   return new AppError(message, 403);
 };
 
