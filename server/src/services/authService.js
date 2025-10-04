@@ -15,7 +15,7 @@ class AuthService extends BaseService {
     if (!(await user.comparePassword(password)))
       throw new AppError("Invalid email or password", 401);
 
-    return user.toObject();
+    return user;
   }
 }
 
