@@ -45,7 +45,7 @@ export const login = async (req, res) => {
       templateInjection(confirmEmailTemp, {
         "{{name}}": user.username,
         "{{year}}": new Date().toISOString(),
-        "{{confirmLink}}": `${process.env.CLIENT_URL}/reset-password?token=${token}&userId=${user._id}`,
+        "{{confirmLink}}": `${process.env.CLIENT_URL}/confirm?token=${token}&userId=${user._id}`,
       })
     );
     throw new AppError("Please confirm your email before logging in", 403);
@@ -53,7 +53,9 @@ export const login = async (req, res) => {
 
   setAuthTokens(res, user);
 
-  ResponseFormatter.success(res, { user: formatUserResponseData(user) });
+  ResponseFormatter.success(res, {
+    user: formatUserResponseData(user.toObject()),
+  });
 };
 
 export const signup = async (req, res) => {
@@ -75,7 +77,7 @@ export const signup = async (req, res) => {
     templateInjection(confirmEmailTemp, {
       "{{name}}": user.username,
       "{{year}}": new Date().toISOString(),
-      "{{confirmLink}}": `${process.env.CLIENT_URL}/reset-password?token=${token}&userId=${user._id}`,
+      "{{confirmLink}}": `${process.env.CLIENT_URL}/confirm?token=${token}&userId=${user._id}`,
     })
   );
 
@@ -102,9 +104,9 @@ export const confirmUser = async (req, res) => {
 
   user.isActive = true;
   user.confirmationToken = undefined;
-  user.save();
+  await user.save();
 
-  setAuthTokens(res, user);
+  setAuthTokens(res, formatUserResponseData(user.toObject()));
 
   ResponseFormatter.success(res, null, "Account verified", 200);
 };
@@ -201,5 +203,7 @@ export const googleAuth = async (req, res) => {
 
   setAuthTokens(res, user);
 
-  ResponseFormatter.success(res, { user: formatUserResponseData(user) });
+  ResponseFormatter.success(res, {
+    user: formatUserResponseData(user.toObject()),
+  });
 };
