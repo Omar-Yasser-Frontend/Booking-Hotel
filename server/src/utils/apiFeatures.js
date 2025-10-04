@@ -15,6 +15,11 @@ class APIFeatures {
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
     queryStr = JSON.parse(queryStr);
 
+    if (queryStr.price) {
+      queryStr.pricePerNight = { ...queryStr.price };
+      delete queryStr.price;
+    }
+
     this.query = this.query.find(queryStr);
 
     return this;
@@ -39,6 +44,11 @@ class APIFeatures {
       this.query = this.query.select("-__v");
     }
 
+    return this;
+  }
+
+  countDocuments() {
+    this.query = this.query.countDocuments();
     return this;
   }
 
