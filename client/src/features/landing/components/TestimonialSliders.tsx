@@ -52,9 +52,9 @@ function TestimonialSliders() {
 
   return (
     <div className="flex flex-grow justify-end gap-2 p-4">
-      <div className="embla shadow-2xl">
-        <div className="embla__viewport" ref={emblaRef}>
-          <div className="embla__container">
+      <div className="embla shadow-2xl w-[450px] max-w-[80vw] h-[300px]">
+        <div className="embla__viewport overflow-hidden h-full" ref={emblaRef}>
+          <div className="embla__container flex flex-col h-full">
             {testimonialsList.map((data, idx) => (
               <TestiMonialCard key={idx} {...data} />
             ))}
