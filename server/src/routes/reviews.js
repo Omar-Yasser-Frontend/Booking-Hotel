@@ -9,6 +9,8 @@ const router = express.Router();
 
 router.get("/:roomId", reviewsController.getReviews);
 
+router.get("/avg/:roomId", reviewsController.getReviewsAvg);
+
 router.use(protectedRoutes);
 
 router.post(

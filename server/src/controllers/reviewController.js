@@ -5,13 +5,10 @@ const reviewsService = new ReviewsService();
 
 export const getReviews = async (req, res) => {
   req.query.page = +req.query.page;
-  const { reviewsAvg, reviews } = await reviewsService.getReveiwsPaginate(
-    req.params.roomId,
-    {
-      ...req.query,
-      limit: 5,
-    }
-  );
+  const reviews = await reviewsService.getReveiwsPaginate(req.params.roomId, {
+    ...req.query,
+    limit: 5,
+  });
 
   ResponseFormatter.success(
     res,
@@ -19,6 +16,20 @@ export const getReviews = async (req, res) => {
       reviews,
       page: req.query.page || 1,
       resultLength: reviews.length,
+    },
+    null,
+    200
+  );
+};
+
+export const getReviewsAvg = async (req, res) => {
+  req.query.page = +req.query.page;
+  const reviewsAvg = await reviewsService.getReviewsAvg(req.params.roomId);
+
+  ResponseFormatter.success(
+    res,
+    {
+      page: req.query.page || 1,
       reviewsAvg,
     },
     null,

@@ -8,17 +8,18 @@ class ReviewsService extends BaseService {
   }
 
   async getReveiwsPaginate(roomId, queryString) {
-    const [[reviewsAvg], reviews] = await Promise.all([
-      this.repo.getAvgReviews(roomId),
-      new APIFeature(
-        this.repo
-          .find({ roomId }, "Review")
-          .populate("userId", "username image"),
-        { ...queryString }
-      ).paginate(),
-    ]);
+    const reviews = await new APIFeature(
+      this.repo.find({ roomId }, "Review").populate("userId", "username image"),
+      { ...queryString }
+    ).paginate();
 
-    return { reviewsAvg, reviews };
+    return reviews;
+  }
+
+  async getReviewsAvg(roomId) {
+    const [reviewsAvg] = await this.repo.getAvgReviews(roomId);
+
+    return reviewsAvg;
   }
 }
 
