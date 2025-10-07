@@ -12,6 +12,7 @@ import AccountVerification from "./pages/AccountVerification";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import Rooms from "./pages/Rooms";
+import RoomDetails from "./pages/RoomDetails";
 
 function Router() {
   const location = useLocation();
@@ -21,6 +22,7 @@ function Router() {
         <Route element={<PageLayout />}>
           <Route index element={<HomePage />} />
           <Route path="/rooms" element={<Rooms />} />
+          <Route path="/rooms/:roomId" element={<RoomDetails />} />
           <Route element={<AuthLayout />}>
             <Route element={<LoginSignupLayout />}>
               <Route path="/login" element={<Login />} />

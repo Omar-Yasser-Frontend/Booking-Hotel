@@ -1,7 +1,13 @@
+import type { QueryFunctionContext } from "@tanstack/react-query";
 import api from "../libs/api";
 
 // Review type based on server's reviews model
-export interface Review {
+
+type UserPopulated = {
+  userId: { _id: string; username: string; image?: string };
+};
+
+export type Review = {
   _id: string;
   roomId: string;
   userId: string;
@@ -9,12 +15,31 @@ export interface Review {
   comment: string;
   createdAt: string;
   updatedAt: string;
-}
+};
+
+type ReviewPopulated = Omit<Review, "userId"> & UserPopulated;
 
 export async function getReviews(
-  roomId: string
-): Promise<{ reviews: Review[]; page: number; resultLength: number }> {
-  const res = await api.get(`/review/${roomId}`);
+  pageParam: number,
+  roomId: string,
+): Promise<{
+  reviews: ReviewPopulated[];
+  nextPage: number;
+  resultLength: number;
+}> {
+  const res = await api.get(`/review/${roomId}?page=${pageParam}`);
+  return res.data;
+}
+
+export async function getReviewsAvg(context: QueryFunctionContext): Promise<{
+  reviewsAvg: {
+    perRating: { _id: number; count: number }[];
+    avgRating?: number;
+    totalReviews?: number;
+  };
+}> {
+  const [, roomId] = context.queryKey;
+  const res = await api.get(`/review/avg/${roomId}`);
   return res.data;
 }
 

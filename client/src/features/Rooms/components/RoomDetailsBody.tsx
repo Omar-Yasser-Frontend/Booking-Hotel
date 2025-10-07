@@ -2,8 +2,9 @@ import Container from "../../../components/Container";
 import MainLoading from "../../../components/MainLoading";
 import useRoom from "../hooks/useRoom";
 import ReservationForm from "./ReservationForm";
-import RoomSlider from "./RoomSlider";
 import RoomTextDetails from "./RoomDetails";
+import RoomReviews from "./RoomReviews";
+import RoomSlider from "./RoomSlider";
 
 function RoomDetailsBody() {
   const { data, isPending } = useRoom();
@@ -16,7 +17,7 @@ function RoomDetailsBody() {
   return (
     <Container>
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[380px_1fr]">
-        <aside className="order-2 h-max rounded-xl bg-gray-main p-5 md:top-24 lg:order-1">
+        <aside className="bg-gray-main order-2 h-max rounded-xl p-5 md:top-24 lg:order-1">
           <h2 className="mb-4 text-2xl font-bold">Reserve this room</h2>
           <ReservationForm />
         </aside>
@@ -26,6 +27,7 @@ function RoomDetailsBody() {
           <RoomTextDetails {...room} />
         </div>
       </div>
+      <RoomReviews />
     </Container>
   );
 }
