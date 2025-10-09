@@ -7,6 +7,7 @@ interface InputProps {
   label: string;
   register: UseFormRegisterReturn;
   error: string | undefined;
+  onKeyDown?: (e: React.KeyboardEvent) => void;
 }
 
 function InputForm({
@@ -14,6 +15,7 @@ function InputForm({
   type = "text",
   placeholder,
   label,
+  onKeyDown,
   register,
   error,
 }: InputProps) {
@@ -25,6 +27,7 @@ function InputForm({
       <input
         id={id}
         type={type}
+        onKeyDown={onKeyDown}
         placeholder={placeholder}
         className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder-slate-400 shadow-sm transition outline-none focus:border-slate-400 focus:ring-2 focus:ring-slate-200"
         {...register}
