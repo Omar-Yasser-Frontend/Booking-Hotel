@@ -1,3 +1,4 @@
+import type { QueryFunctionContext } from "@tanstack/react-query";
 import api from "../libs/api";
 
 // Reservation type based on server's reservation model
@@ -26,14 +27,26 @@ export async function createReservation(data: {
   checkIn: Date;
   checkOut: Date;
   extras: string[];
+  notes: string;
+  guests: number;
+  room: number;
 }): Promise<{ client_secret: string }> {
   const res = await api.post("/payment/intent", data);
   return res.data;
 }
 
 export async function cancelReservation(
-  id: string
+  id: string,
 ): Promise<{ reservation: Reservation }> {
   const res = await api.delete(`/reservation/${id}`);
+  return res.data;
+}
+
+export async function getReservedDates(
+  context: QueryFunctionContext,
+): Promise<{ dates: { from: Date; to: Date }[] }> {
+  const [, roomId] = context.queryKey;
+  const res = await api.get(`/reservation/dates/${roomId}`);
+
   return res.data;
 }
