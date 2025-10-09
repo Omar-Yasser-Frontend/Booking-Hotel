@@ -15,8 +15,6 @@ function Reviews() {
 
   if (isPending) return <Loading />;
 
-  console.log(data);
-
   return (
     <div className="my-10">
       {data?.pages &&
@@ -25,7 +23,10 @@ function Reviews() {
           .map(({ reviews }) => reviews)
           .flat()
           .map((review) => (
-            <div className="my-5 space-y-3 rounded-md bg-gray-50 p-4">
+            <div
+              key={review._id}
+              className="my-5 space-y-3 rounded-md bg-gray-50 p-4"
+            >
               <div className="flex items-center gap-3">
                 <img
                   src={review.userId.image || "/images/default-user.jpg"}

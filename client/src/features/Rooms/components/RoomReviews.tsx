@@ -15,22 +15,22 @@ function RoomReviews() {
   return (
     <div className="mt-20 space-y-2 md:mt-10">
       <div className="w-fit text-center">
-        <p className="text-5xl font-bold">
+        <div className="text-5xl font-bold">
           <p>
             {data?.reviewsAvg?.avgRating?.toFixed(1) || 0}
             <span className="my-2 flex items-center justify-end gap-2 text-[16px] text-yellow-500">
-              {Array.from({ length: 5 }).map(() => {
-                if (handleStarCalc === 0) return <FaRegStar />;
+              {Array.from({ length: 5 }).map((_, idx) => {
+                if (handleStarCalc === 0) return <FaRegStar key={idx} />;
                 if (handleStarCalc < 1) {
                   handleStarCalc = 0;
-                  return <FaStarHalfAlt />;
+                  return <FaStarHalfAlt key={idx} />;
                 }
                 --handleStarCalc;
-                return <FaStar />;
+                return <FaStar key={idx} />;
               })}
             </span>
           </p>
-        </p>
+        </div>
         <p className="font-bold text-gray-500">
           {data?.reviewsAvg.totalReviews || 0} <br /> Reviews Count
         </p>

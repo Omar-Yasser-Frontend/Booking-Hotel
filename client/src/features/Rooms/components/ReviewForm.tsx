@@ -50,6 +50,7 @@ function ReviewForm() {
       <div className="flex text-xl text-yellow-500">
         {Array.from({ length: 5 }).map((_, idx) => (
           <span
+            key={idx}
             className="cursor-pointer px-0.5"
             onMouseEnter={() => setRatingTheme(idx + 1)}
             onMouseLeave={() => setRatingTheme(rating)}

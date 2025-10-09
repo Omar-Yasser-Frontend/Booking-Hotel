@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import Input from "../../../components/Input";
 import { useSyncSearchParams } from "../hooks/useSyncSearchParams";
 import { useSearchParams } from "react-router";
+import { preventStringsInInputs } from "../utils/preventStringsInInputs";
 
 function FilterCapacity() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,8 +28,6 @@ function FilterCapacity() {
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
 
-          if (!Number(value) || Number(value) < 1) return;
-
           if (roomTimeoutID.current !== null)
             clearTimeout(roomTimeoutID.current);
 
@@ -37,6 +36,7 @@ function FilterCapacity() {
             updateRoomCapParams(value);
           }, 300);
         }}
+        onKeyDown={preventStringsInInputs}
         maxLength={2}
         placeholder="Rooms capacity"
         label="Max Rooms Capacity (<= 12)"
@@ -46,10 +46,9 @@ function FilterCapacity() {
         type="number"
         id="guests-cap"
         value={guestCap}
+        onKeyDown={preventStringsInInputs}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
-
-          if (!Number(value) || Number(value) < 1) return;
 
           if (guestTimeoutID.current !== null)
             clearTimeout(guestTimeoutID.current);

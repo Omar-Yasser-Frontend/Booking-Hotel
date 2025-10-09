@@ -28,7 +28,7 @@ function ReviewsAvgProg({ perRating = [], totalReviews }: ReviewsAvgProgProps) {
     <div>
       <ul>
         {rating.map((rate) => (
-          <li className="flex items-center gap-2">
+          <li key={rate._id} className="flex items-center gap-2">
             <span>{rate._id}</span>
             <div className="bg-gray-main h-2 w-full overflow-hidden rounded-full md:w-[50%] xl:w-[40%]">
               <div

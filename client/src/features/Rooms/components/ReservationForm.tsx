@@ -1,68 +1,100 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import "react-day-picker/style.css";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 import PrimaryBtn from "../../../components/PrimaryBtn";
+import { useBooking } from "../hooks/useBooking";
+import useRoom from "../hooks/useRoom";
+import { reservation, type ReservationType } from "../types/reservation";
+import { formatFormPrice } from "../utils/formatPrice";
+import ExtrasFormInput from "./ExtrasFormInput";
+import FormTextInputs from "./FormTextInputs";
+import ReservationDateForm from "./ReservationDateForm";
+import { useReserved } from "../hooks/useReserved";
+import Loading from "../../../components/Loading";
 
 function ReservationForm() {
+  const { mutate: book, isPending } = useBooking();
+  const {
+    data: reservedRooms,
+    isPending: isPendingDates,
+    isError,
+    error,
+  } = useReserved();
+  const navigate = useNavigate();
+  const { data } = useRoom();
+  const {
+    control,
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+    watch,
+  } = useForm<ReservationType>({
+    mode: "all",
+    resolver: zodResolver(reservation),
+  });
+
+  console.log(reservedRooms);
+
   return (
-    <form className="space-y-3">
-      <div>
-        <label className="mb-1 block text-sm opacity-80" htmlFor="checkIn">
-          Check-in
-        </label>
-        <input
-          id="checkIn"
-          type="date"
-          className="w-full rounded-md bg-white px-3 py-2 focus:outline-none"
-          placeholder="Select date"
+    <form
+      onSubmit={handleSubmit(async (bookingForm) => {
+        const buildBooking = {
+          roomId: data?.room._id as string,
+          checkIn: bookingForm.reservationDate.from,
+          checkOut: bookingForm.reservationDate.to,
+          extras: bookingForm.extras,
+          notes: bookingForm.notes,
+          guests: Number(bookingForm.guests),
+          room: Number(bookingForm.room),
+        };
+
+        book(buildBooking, {
+          onSuccess: (data) => {
+            sessionStorage.setItem("clientSecret", data.client_secret);
+            navigate("/checkout");
+          },
+        });
+
+        reset();
+      })}
+      className="space-y-3"
+    >
+      {isPendingDates ? (
+        <Loading />
+      ) : isError ? (
+        error.message
+      ) : (
+        <ReservationDateForm
+          control={control}
+          disabled={reservedRooms.dates}
+          error={errors.reservationDate?.message}
+          pricePerNight={data?.room.pricePerNight as number}
         />
-      </div>
-      <div>
-        <label className="mb-1 block text-sm opacity-80" htmlFor="checkOut">
-          Check-out
-        </label>
-        <input
-          id="checkOut"
-          type="date"
-          className="w-full rounded-md bg-white px-3 py-2 focus:outline-none"
-          placeholder="Select date"
-        />
-      </div>
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <label className="mb-1 block text-sm opacity-80" htmlFor="guests">
-            Guests
-          </label>
-          <input
-            id="guests"
-            type="number"
-            min={1}
-            className="w-full rounded-md bg-white px-3 py-2 focus:outline-none"
-            placeholder="2"
-          />
-        </div>
-        <div>
-          <label className="mb-1 block text-sm opacity-80" htmlFor="rooms">
-            Rooms
-          </label>
-          <input
-            id="rooms"
-            type="number"
-            min={1}
-            className="w-full rounded-md bg-white px-3 py-2 focus:outline-none"
-            placeholder="1"
-          />
-        </div>
-      </div>
-      <div>
-        <label className="mb-1 block text-sm opacity-80" htmlFor="notes">
-          Notes
-        </label>
-        <textarea
-          id="notes"
-          rows={4}
-          className="w-full resize-none rounded-md bg-white px-3 py-2 focus:outline-none"
-          placeholder="Any special requests"
-        />
-      </div>
-      <PrimaryBtn className="w-full">Reserve</PrimaryBtn>
+      )}
+
+      <ExtrasFormInput
+        control={control}
+        extras={
+          data?.room.extras as unknown as { name: string; price: number }[]
+        }
+      />
+
+      <FormTextInputs errors={errors} register={register} />
+
+      <hr className="bg-black" />
+
+      <p className="flex items-center justify-between text-xl font-semibold">
+        <span>Total:</span>{" "}
+        <span>
+          {data && watch().reservationDate && formatFormPrice(data, watch)}$
+        </span>
+      </p>
+
+      <PrimaryBtn className="w-full" isPending={isPending}>
+        Checkout
+      </PrimaryBtn>
     </form>
   );
 }
