@@ -4,18 +4,25 @@ import ReviewsService from "../services/reviewsService.js";
 const reviewsService = new ReviewsService();
 
 export const getReviews = async (req, res) => {
-  req.query.page = +req.query.page;
+  const page = (req.query.page = +req.query.page || 1);
+  const limit = 5;
   const reviews = await reviewsService.getReveiwsPaginate(req.params.roomId, {
     ...req.query,
-    limit: 5,
+    limit: limit + 1,
   });
+  let nextPage = null;
+
+  if (reviews.length > limit) {
+    reviews.shift();
+    nextPage = page + 1;
+  }
 
   ResponseFormatter.success(
     res,
     {
       reviews,
-      page: req.query.page || 1,
       resultLength: reviews.length,
+      nextPage,
     },
     null,
     200
@@ -23,13 +30,11 @@ export const getReviews = async (req, res) => {
 };
 
 export const getReviewsAvg = async (req, res) => {
-  req.query.page = +req.query.page;
   const reviewsAvg = await reviewsService.getReviewsAvg(req.params.roomId);
 
   ResponseFormatter.success(
     res,
     {
-      page: req.query.page || 1,
       reviewsAvg,
     },
     null,
