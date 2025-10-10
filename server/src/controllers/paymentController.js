@@ -2,7 +2,7 @@ import Stripe from "stripe";
 import RoomService from "../services/roomService.js";
 import ResponseFormatter from "../core/ResponseFormatter.js";
 import AppError from "../core/AppError.js";
-import { differenceInDays } from "date-fns";
+import { addDays, differenceInDays, isBefore, startOfDay } from "date-fns";
 import ReservationService from "../services/reservationService.js";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -20,11 +20,16 @@ export const createPaymentIntent = async (req, res) => {
     )
   )
     throw new AppError(
-      "Room Alreadey Reserved in this date, please choose another date",
+      "You can only book starting from the day after tomorrow.",
       403
     );
 
-  const room = await roomService.findById(req.body.roomId);
+  const afterTomorrowDate = startOfDay(addDays(new Date(), 2));
+
+  if (isBefore(checkOut, afterTomorrowDate))
+    throw new AppError("Can't reserve in such early day", 401);
+
+  const room = await roomService.findById(req.body.roomId, "Room");
   room._id = room._id.toString();
   const map = new Map();
 
