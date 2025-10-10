@@ -6,6 +6,9 @@ export const reservationSchema = z
     checkIn: z.string().datetime("Invalid Date for checkin"),
     checkOut: z.string().datetime("Invalid Date for checkout"),
     extras: z.array(z.string().max(40)),
+    guests: z.number().min(1),
+    room: z.number().min(1),
+    notes: z.string().max(50).default(""),
   })
   .refine(
     (data) =>

@@ -7,22 +7,27 @@ class ReservationService extends BaseService {
     super(new ReservationRepository());
   }
 
+  async getReservedDates(roomId) {
+    const reservedDates = await this.repo
+      .find({ roomId })
+      .select("checkIn checkOut");
+
+    return reservedDates;
+  }
+
   async checkReservationAvailability(roomId, checkIn, checkOut) {
     const reservations = await this.repo
       .find({
         roomId,
         $or: [
-          // 1. startDate الجديد يقع بين startDate و endDate القديم
           {
             checkIn: { $lte: checkIn },
             checkOut: { $gte: checkIn },
           },
-          // 2. endDate الجديد يقع بين startDate و endDate القديم
           {
             checkIn: { $lte: checkOut },
             checkOut: { $gte: checkOut },
           },
-          // 3. الحجز الجديد يغطي الحجز القديم كله
           {
             checkIn: { $gte: checkIn },
             checkOut: { $lte: checkOut },

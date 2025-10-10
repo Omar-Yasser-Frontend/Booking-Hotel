@@ -19,6 +19,9 @@ const reservationSchema = new mongoose.Schema({
   totalPrice: { type: Number, required: true },
   nightsCount: { type: Number, required: true },
   extras: { type: [{ name: String, price: Number, _id: false }] },
+  notes: { type: String, minLength: 50 },
+  guests: { type: Number, required: true, min: 1 },
+  room: { type: Number, required: true, min: 1 },
   status: {
     type: String,
     enum: ["paid", "canceled", "check-in", "check-out"],

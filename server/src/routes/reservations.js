@@ -8,6 +8,8 @@ router.use(protectedRoutes);
 
 router.get("/", reservationController.getReservations);
 
+router.get("/dates/:roomId", reservationController.getReservedDates);
+
 router.delete("/:id", reservationController.cancelReservation);
 
 export default router;
