@@ -1,9 +1,9 @@
 import BaseService from "../core/base/baseService.js";
-import RoomRepository from "../repositories/roomRepository.js";
+import UserRepository from "../repositories/userRepository.js";
 
 class userService extends BaseService {
   constructor() {
-    super(new RoomRepository());
+    super(new UserRepository());
   }
 }
 

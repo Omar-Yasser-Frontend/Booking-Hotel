@@ -1,9 +1,9 @@
 import BaseRepository from "../core/base/baseRepository.js";
-import Room from "../models/room.js";
+import User from "../models/user.js";
 
 class UserRepository extends BaseRepository {
   constructor() {
-    super(Room);
+    super(User);
   }
 }
 
