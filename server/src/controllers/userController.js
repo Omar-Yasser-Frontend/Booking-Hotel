@@ -31,6 +31,23 @@ export const UploadMeImage = async (req, res) => {
   ResponseFormatter.success(res, { user: userUpdated }, null, 201);
 };
 
+export const updateMe = async (req, res) => {
+  const { _id } = req.user;
+  const userData = await userService.findByIdAndUpdate(
+    _id.toString(),
+    req.body,
+    "User"
+  );
+
+  ResponseFormatter.success(
+    res,
+    {
+      user: formatUserResponseData(userData.toObject()),
+    },
+    "Profile updated successfully"
+  );
+};
+
 export const deleteMe = async (req, res) => {
   const user = req.user;
   user.deactiveate = true;

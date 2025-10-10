@@ -34,3 +34,7 @@ export const changePassword = z.object({
   currentPassword: z.string().min(8).max(75),
   newPassword: z.string().min(8).max(75),
 });
+
+export const updateMe = z.object({
+  username: z.string().trim().min(3).max(100),
+});
