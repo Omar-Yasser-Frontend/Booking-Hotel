@@ -7,6 +7,8 @@ import validation from "../middlewares/validationMiddleware.js";
 
 const router = express.Router();
 
+router.get("/me", protectedRoutes, reviewsController.getMyReviews);
+
 router.get("/:roomId", reviewsController.getReviews);
 
 router.get("/avg/:roomId", reviewsController.getReviewsAvg);

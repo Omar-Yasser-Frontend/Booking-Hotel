@@ -6,10 +6,13 @@ const reviewsService = new ReviewsService();
 export const getReviews = async (req, res) => {
   const page = (req.query.page = +req.query.page || 1);
   const limit = 5;
-  const reviews = await reviewsService.getReveiwsPaginate(req.params.roomId, {
-    ...req.query,
-    limit: limit + 1,
-  });
+  const reviews = await reviewsService.getReveiwsPaginate(
+    { roomId: req.params.roomId },
+    {
+      ...req.query,
+      limit: limit + 1,
+    }
+  );
   let nextPage = null;
 
   if (reviews.length > limit) {
@@ -68,4 +71,35 @@ export const createReview = async (req, res) => {
   });
 
   ResponseFormatter.success(res, { review }, null, 200);
+};
+
+export const getMyReviews = async (req, res) => {
+  console.log("got here");
+  const page = (req.query.page = +req.query.page || 1);
+  const limit = 5;
+  const reviews = await reviewsService.getReveiwsPaginate(
+    { userId: req.user._id },
+    {
+      ...req.query,
+      limit: limit + 1,
+    }
+  );
+
+  let nextPage = null;
+
+  if (reviews.length > limit) {
+    reviews.shift();
+    nextPage = page + 1;
+  }
+
+  ResponseFormatter.success(
+    res,
+    {
+      reviews,
+      resultLength: reviews.length,
+      nextPage,
+    },
+    null,
+    200
+  );
 };
