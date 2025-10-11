@@ -7,9 +7,9 @@ class ReviewsService extends BaseService {
     super(new ReviewsRepository());
   }
 
-  async getReveiwsPaginate(roomId, queryString) {
+  async getReveiwsPaginate(filter, queryString) {
     const reviews = await new APIFeature(
-      this.repo.find({ roomId }, "Review").populate("userId", "username image"),
+      this.repo.find(filter, "Review").populate("userId", "username image"),
       { ...queryString }
     ).paginate();
 
