@@ -5,6 +5,7 @@ import multer from "multer";
 import { updateMe } from "../validation/authSchemas.js";
 import imageSanitizeAndTypeValidation from "../middlewares/imageSanitizeAndTypeValidation.js";
 import validationMiddleware from "../middlewares/validationMiddleware.js";
+import optionalProtectedRoute from "../middlewares/optionalProtectedRoute.js";
 
 const storage = multer.memoryStorage();
 const upload = multer({
@@ -14,9 +15,9 @@ const upload = multer({
 
 const router = express.Router();
 
-router.use(protectedRoutes);
+router.get("/me", optionalProtectedRoute, userController.getMe);
 
-router.get("/me", userController.getMe);
+router.use(protectedRoutes);
 
 router.put("/me", validationMiddleware(updateMe), userController.updateMe);
 
