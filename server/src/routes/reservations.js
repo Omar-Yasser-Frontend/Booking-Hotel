@@ -4,11 +4,11 @@ import protectedRoutes from "../middlewares/protectedRoutes.js";
 
 const router = express.Router();
 
+router.get("/dates/:roomId", reservationController.getReservedDates);
+
 router.use(protectedRoutes);
 
 router.get("/", reservationController.getReservations);
-
-router.get("/dates/:roomId", reservationController.getReservedDates);
 
 router.delete("/:id", reservationController.cancelReservation);
 
