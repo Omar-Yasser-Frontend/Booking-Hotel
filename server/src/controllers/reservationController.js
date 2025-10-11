@@ -5,7 +5,8 @@ const reservationService = new ReservationService();
 export const getReservations = async (req, res) => {
   const userReservations = await reservationService.find(
     { userId: req.user._id },
-    "Reservation"
+    "Reservation",
+    true
   );
 
   ResponseFormatter.success(res, { reservations: userReservations }, null, 200);
