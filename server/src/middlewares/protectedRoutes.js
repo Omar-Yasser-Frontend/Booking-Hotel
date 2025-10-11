@@ -14,21 +14,24 @@ export default async (req, res, next) => {
 
     const user = await getUserProtectedRoutes(decoded);
 
-    if (user.passwordChangeDate(decoded.iat))
-      throw new AppError("Password changed recently, please login again", 401);
+    if (user.passwordChangeDate(decoded.iat)) {
+      res.clearCookie("refreshToken");
+      next(new AppError("Password changed recently, please login again", 401));
+    }
 
     req.user = user;
     next();
   } catch (err) {
-    if (!refreshToken) throw new AppError("Not Authorized", 401);
     if (err.name !== "TokenExpiredError") throw err;
 
     const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET);
     const newAccessToken = createJWTToken(decoded, "15m");
 
     const user = await getUserProtectedRoutes(decoded);
-    if (user.passwordChangeDate(decoded.iat))
+    if (user.passwordChangeDate(decoded.iat)) {
+      res.clearCookie("refreshToken");
       throw new AppError("Password changed recently, please login again", 401);
+    }
 
     res.setHeader("Authorization", `Bearer ${newAccessToken}`);
     req.user = user;
