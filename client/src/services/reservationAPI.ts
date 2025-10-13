@@ -3,15 +3,17 @@ import api from "../libs/api";
 
 // Reservation type based on server's reservation model
 export interface Reservation {
-  _id: string;
   roomId: string;
   userId: string;
   intentId: string;
-  checkIn: string;
-  checkOut: string;
+  checkIn: Date;
+  checkOut: Date;
   totalPrice: number;
   nightsCount: number;
   extras: { name: string; price: number }[];
+  notes: string;
+  guests: number;
+  room: number;
   status: "paid" | "canceled" | "check-in" | "check-out";
 }
 
