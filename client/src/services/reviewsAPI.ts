@@ -1,8 +1,6 @@
 import type { QueryFunctionContext } from "@tanstack/react-query";
 import api from "../libs/api";
 
-// Review type based on server's reviews model
-
 type UserPopulated = {
   userId: { _id: string; username: string; image?: string };
 };
@@ -65,5 +63,15 @@ export async function createReview(data: {
   comment: string;
 }): Promise<{ review: Review }> {
   const res = await api.post(`/review`, data);
+  return res.data;
+}
+
+export async function getMyReviews(pageParams: number): Promise<{
+  reviews: ReviewPopulated[];
+  nextPage: number;
+  resultLength: number;
+}> {
+  const res = await api.get(`/review/me?page=${pageParams}`);
+
   return res.data;
 }
