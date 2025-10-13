@@ -11,9 +11,16 @@ export interface User {
   updatedAt: string;
 }
 
-export async function getMe(): Promise<{ user: User }> {
+export async function getMe(): Promise<{ user: User } | null> {
   const res = await api.get("/user/me");
 
+  return res.data;
+}
+
+export async function updateMe(data: {
+  username: string;
+}): Promise<{ user: User }> {
+  const res = await api.put("/user/me", data);
   return res.data;
 }
 
