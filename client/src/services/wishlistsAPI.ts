@@ -1,3 +1,5 @@
+import type { QueryFunctionContext } from "@tanstack/react-query";
+import type { Room } from "../features/Rooms/types/Room";
 import api from "../libs/api";
 
 // Wishlist type based on server's wishlist model
@@ -7,8 +9,19 @@ export interface Wishlist {
   userId: string;
 }
 
-export async function getWishlists(): Promise<{ wishlists: Wishlist[] }> {
+export async function getWishlists(): Promise<{
+  wishlists: (Omit<Wishlist, "roomId"> & { roomId: Room })[];
+}> {
   const res = await api.get("/wishlist");
+  return res.data;
+}
+
+export async function getWishlist(context: QueryFunctionContext): Promise<{
+  wishlist: Wishlist;
+} | null> {
+  const [, roomId] = context.queryKey;
+  const res = await api.get("/wishlist/" + roomId);
+
   return res.data;
 }
 
