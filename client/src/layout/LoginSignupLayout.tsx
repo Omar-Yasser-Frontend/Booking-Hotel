@@ -1,5 +1,5 @@
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import GoogleLoginBtn from "../components/GoogleLoginBtn";
+import GoogleLoginBtn from "../features/auth/components/GoogleLoginBtn";
 import { Link, Outlet } from "react-router";
 
 function LoginSignupLayout() {
