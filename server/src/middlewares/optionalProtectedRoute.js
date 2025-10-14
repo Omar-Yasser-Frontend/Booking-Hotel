@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken";
-import AppError from "../core/AppError.js";
-import getUserProtectedRoutes from "../utils/getUserProtectedRoutes.js";
 import createJWTToken from "../utils/createJWTToken.js";
+import getUserProtectedRoutes from "../utils/getUserProtectedRoutes.js";
 
 export default async (req, res, next) => {
   const accessToken = req.headers["authorization"]?.split(" ")[1];
@@ -25,7 +24,7 @@ export default async (req, res, next) => {
     if (!refreshToken || err.name !== "TokenExpiredError") next();
 
     try {
-      const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET);
+    const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET);
       const newAccessToken = createJWTToken(decoded, "15m");
 
       const user = await getUserProtectedRoutes(decoded);
