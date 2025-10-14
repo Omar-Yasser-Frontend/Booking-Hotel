@@ -19,7 +19,7 @@ function HeaderMenu() {
       </div>
 
       {showMenu && (
-        <Modal close={close} dir="to-right">
+        <Modal className="lg:hidden" close={close} dir="to-right">
           <NavLinksModal />
         </Modal>
       )}
