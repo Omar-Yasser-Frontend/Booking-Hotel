@@ -26,3 +26,16 @@ export const removeWishlist = async (req, res) => {
 
   ResponseFormatter.success(res, null, null, 204);
 };
+
+export const getWishlistById = async (req, res) => {
+  const { _id } = req.user;
+  const { roomId } = req.params;
+
+  const wishlist = await wishlistService.findOne(
+    { roomId, userId: _id },
+    "Wishlist",
+    true
+  );
+
+  ResponseFormatter.success(res, wishlist ? { wishlist } : null);
+};

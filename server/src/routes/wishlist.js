@@ -10,6 +10,8 @@ router.use(protectedRoutes);
 
 router.get("/", wishlistController.getWishlists);
 
+router.get("/:roomId", wishlistController.getWishlistById);
+
 router.post(
   "/",
   validation(wishlistSchemas.wishlist),
