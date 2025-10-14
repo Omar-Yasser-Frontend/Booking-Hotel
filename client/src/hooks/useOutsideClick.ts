@@ -1,7 +1,7 @@
 import { useEffect, useRef, useCallback } from "react";
 
 function useOutsideClick(close: () => void, isActive: boolean = true) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLElement | null>(null);
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
@@ -9,7 +9,7 @@ function useOutsideClick(close: () => void, isActive: boolean = true) {
         close();
       }
     },
-    [close]
+    [close],
   );
 
   useEffect(() => {
