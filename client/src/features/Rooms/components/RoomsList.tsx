@@ -1,5 +1,5 @@
+import ErrorMessage from "../../../components/ErrorMessage";
 import Loading from "../../../components/Loading";
-import PrimaryBtn from "../../../components/PrimaryBtn";
 import { useRooms } from "../hooks/useRooms";
 import PaginateRooms from "./PaginateRooms";
 import RoomCard from "./RoomCard";
@@ -14,13 +14,7 @@ function RoomsList() {
       </div>
     );
 
-  if (isError)
-    return (
-      <div className="mt-8">
-        <h2>{error.message}</h2>
-        <PrimaryBtn to="/">Go Home</PrimaryBtn>
-      </div>
-    );
+  if (isError) return <ErrorMessage message={error.message} />;
 
   return (
     <>

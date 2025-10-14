@@ -7,7 +7,7 @@ import useCreateReview from "../hooks/useCreateReview";
 import ButtonLoading from "../../../components/ButtonLoading";
 
 function ReviewForm() {
-  const { isPending, isError } = useMe();
+  const { isPending, isError, data } = useMe();
   const [rating, setRating] = useState(0);
   const [ratingTheme, setRatingTheme] = useState(0);
   const [error, setError] = useState<null | string>(null);
@@ -16,7 +16,7 @@ function ReviewForm() {
 
   if (isPending) return <Loading />;
 
-  if (isError)
+  if (isError || !data)
     return (
       <div className="bg-gray-main mt-4 ml-auto w-fit space-y-4 rounded-md p-8">
         <div>Please login to be able to comment</div>
