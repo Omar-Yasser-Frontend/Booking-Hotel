@@ -40,11 +40,12 @@ api.interceptors.response.use(
   (err: AxiosError<FailResponse>) => {
     const url = err.config?.url;
 
-    if (url?.includes("/user/me")) return Promise.reject(err);
+    if (url?.includes("/user/me") && err.config?.method === "get")
+      return Promise.reject(err);
 
     const message = err.response?.data?.message || "Something went wrong";
     toast.error(message);
-    return Promise.reject(message);
+    return Promise.reject({ message });
   },
 );
 
