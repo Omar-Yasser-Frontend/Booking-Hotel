@@ -13,7 +13,7 @@ export async function getRooms(
 export async function searchRooms(
   query: string,
 ): Promise<{ resultLength: number; rooms: Room[] }> {
-  const res = await api.get(`/room?search=${query}`);
+  const res = await api.get(`/room/search?search=${query}`);
   return res.data;
 }
 
