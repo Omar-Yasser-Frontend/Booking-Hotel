@@ -181,7 +181,7 @@ export const changePassword = async (req, res) => {
 export const logout = (req, res) => {
   res.clearCookie("refreshToken");
 
-  ResponseFormatter.success(res, null, null, 204);
+  ResponseFormatter.success(res, null, null, 200);
 };
 
 export const googleAuth = async (req, res) => {

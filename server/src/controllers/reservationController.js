@@ -16,7 +16,6 @@ export const getReservedDates = async (req, res) => {
   const reservedDates = await reservationService.getReservedDates(
     req.params.roomId
   );
-  console.log(req.params.roomId);
   const buildReservedDates = reservedDates.map(
     ({ _id, checkIn, checkOut }) => ({
       _id,

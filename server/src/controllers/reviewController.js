@@ -74,7 +74,6 @@ export const createReview = async (req, res) => {
 };
 
 export const getMyReviews = async (req, res) => {
-  console.log("got here");
   const page = (req.query.page = +req.query.page || 1);
   const limit = 5;
   const reviews = await reviewsService.getReveiwsPaginate(

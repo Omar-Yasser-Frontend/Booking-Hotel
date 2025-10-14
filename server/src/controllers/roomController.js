@@ -1,5 +1,5 @@
-import RoomService from "../services/roomService.js";
 import ResponseFormatter from "../core/ResponseFormatter.js";
+import RoomService from "../services/roomService.js";
 
 const roomService = new RoomService();
 
