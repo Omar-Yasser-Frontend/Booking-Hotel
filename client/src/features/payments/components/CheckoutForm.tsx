@@ -5,7 +5,7 @@ import {
 } from "@stripe/react-stripe-js";
 import PrimaryBtn from "../../../components/PrimaryBtn";
 import Container from "../../../components/Container";
-import ChechoutSummery from "./ChechoutSummery";
+import CheckoutSummery from "./CheckoutSummery";
 
 export interface Extra {
   name: string;
@@ -63,7 +63,7 @@ function CheckoutForm() {
       <form onSubmit={handleSubmit} className="mx-auto w-xl max-w-full">
         <h2 className="mb-8 text-3xl font-bold">Checkout</h2>
         <PaymentElement />
-        <ChechoutSummery bookingData={bookingData} />
+        <CheckoutSummery bookingData={bookingData} />
         <PrimaryBtn className="mt-8 block w-full">Confirm Payment</PrimaryBtn>
       </form>
     </Container>
