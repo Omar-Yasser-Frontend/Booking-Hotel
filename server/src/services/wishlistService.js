@@ -9,7 +9,7 @@ class WishlistService extends BaseService {
   async findAndPopulateRooms(userId) {
     const result = await this.repo
       .find({ userId })
-      .populate("roomId", "name thumbnail");
+      .populate("roomId", "name thumbnail description capacity pricePerNight");
 
     return result;
   }
