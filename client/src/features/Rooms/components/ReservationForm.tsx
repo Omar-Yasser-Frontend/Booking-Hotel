@@ -35,8 +35,6 @@ function ReservationForm() {
     resolver: zodResolver(reservation),
   });
 
-  console.log(reservedRooms);
-
   return (
     <form
       onSubmit={handleSubmit(async (bookingForm) => {
@@ -52,7 +50,7 @@ function ReservationForm() {
 
         book(buildBooking, {
           onSuccess: (data) => {
-            sessionStorage.setItem("clientSecret", data.client_secret);
+            sessionStorage.setItem("clientSecret", JSON.stringify(data));
             navigate("/checkout");
           },
         });
