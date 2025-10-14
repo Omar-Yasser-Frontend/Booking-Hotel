@@ -3,28 +3,32 @@ import useOutsideClick from "../hooks/useOutsideClick";
 
 interface ModalProps {
   children: React.ReactNode;
-  dir?: "center" | "to-right";
+  dir?: "center" | "to-right" | "top-center";
   close: () => void;
+  className?: string;
 }
 
 function Modal({
   children,
   dir = "center",
+  className,
   close = () => console.log("closing..."),
 }: ModalProps) {
   const ref = useOutsideClick(close);
 
   return (
     <div
-      className={`fixed inset-0 z-[1000] flex lg:hidden ${
+      className={`fixed inset-0 ${className} z-[1000] flex ${
         dir === "center"
           ? "items-center justify-center bg-[#ffffff73]"
-          : "items-stretch justify-end bg-[#00000073]"
+          : dir === "top-center"
+            ? "items-start justify-center bg-[#ffffff73] pt-10"
+            : "items-stretch justify-end bg-[#00000073]"
       }`}
     >
       <div
         ref={ref as React.RefObject<HTMLDivElement>}
-        className="relative w-[280px] bg-white"
+        className="relative w-[90vw] max-w-[520px] bg-white"
       >
         {children}
       </div>

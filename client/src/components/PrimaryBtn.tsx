@@ -6,7 +6,9 @@ interface PrimaryBtnProps {
   className?: string;
   to?: string | undefined;
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: (
+    e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
+  ) => void;
   isPending?: boolean;
 }
 
@@ -23,7 +25,10 @@ function PrimaryBtn({
   return (
     <Component
       to={to as string}
-      onClick={() => onClick && onClick()}
+      onClick={(e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) =>
+        onClick && onClick(e)
+      }
+      // when using Link, disabled is not a native prop; keep it for consistency but it won't apply to anchors
       disabled={disabled || isPending}
       className={`bg-base border-base cursor-pointer border-3 px-6 py-3 text-white ${className} duration-300 hover:bg-white hover:text-black`}
     >

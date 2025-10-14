@@ -23,7 +23,7 @@ function NavLinks() {
         <li>
           <NavLink
             className={"hover:text-accent-500 nav-link relative duration-300"}
-            to={"/About us"}
+            to={"/about"}
           >
             About Us
           </NavLink>
@@ -31,7 +31,7 @@ function NavLinks() {
         <li>
           <NavLink
             className={"hover:text-accent-500 nav-link relative duration-300"}
-            to={"/Contact"}
+            to={"/contact"}
           >
             Contact Us
           </NavLink>
