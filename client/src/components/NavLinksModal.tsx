@@ -11,11 +11,13 @@ function NavLinksModal() {
       {user && (
         <div className="border-b border-gray-200 p-4">
           <div className="flex items-center gap-3">
-            <img
-              src={user.image || "/images/default-user.jpg"}
-              alt="Profile"
-              className="border-base h-10 w-10 rounded-full border-2 object-cover"
-            />
+            <Link to={"/profile/info"}>
+              <img
+                src={user.image || "/images/default-user.jpg"}
+                alt="Profile"
+                className="border-base h-10 w-10 rounded-full border-2 object-cover"
+              />
+            </Link>
             <div className="min-w-0 flex-1">
               <p className="truncate text-base text-sm font-semibold">
                 {user.username}
@@ -27,7 +29,7 @@ function NavLinksModal() {
               className="border-base hover:bg-base focus-visible:ring-accent-500 inline-flex items-center gap-2 rounded-md border-2 px-3 py-2 text-base text-sm font-semibold duration-300 hover:text-white focus-visible:ring-2 focus-visible:outline-none"
             >
               <AiOutlineHeart size={18} />
-              <span>Favorites</span>
+              <span>Wishlists</span>
             </Link>
           </div>
         </div>
