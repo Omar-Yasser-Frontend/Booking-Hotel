@@ -1,13 +1,28 @@
+# 🏨 Hotel Booking (MERN Stack)
+
+# Disclaimer
+
+> This project (**Hotel Booking**) was created **for portfolio and learning purposes only**. It is **not a real booking platform**, and no actual reservations, payments, or services are provided.
+
+# Highlight
+
+This is a demo hotel booking platform built for portfolio and learning purposes, showcasing full-stack (MERN) development skills.
+
+Key Features:
+
+- Authentication: you can login and sign up using email/password, or using google for fast/prefered authentication
+- Browsing Rooms: You can browse and search rooms, filter by preferences, and view detailed information about each one, it's reserved/busy days and when you can reserve, seeing other reviews and hotel rules
+- Browse Profile Info: you can change your profile image, name, seeing your reviews in activities page and reservation history
+- Managing Payments: i used Stripe to make payment which is fully working, _*Don't enter real payment information that will pay really*_
+- Manage Bookings: in the reservation form you can't book reserved days, or passed days, and can't make race in payment since if the room is reserved while you enter payment information your reservation will be refunded
+
 # Project Overview
 
-## Disclaimer
+The booking website is a demo project built to showcase booking management features and room browsing functionality.
 
-This project (**Hotel Booking**) was created **for portfolio and learning purposes only**.  
-It is **not a real booking platform**, and no actual reservations, payments, or services are provided.
+Here’s a preview of the website interface:
 
-## 🚀 About This Project
-
-This repository represents an ongoing project that I'm actively developing as part of my portfolio. The project is currently in the frontend building phase, where I'm designing and structuring the features that will be implemented for frontend components.
+![Picture of Projects website](./Website's-image.png)
 
 ## 🛠️ Tech Stack
 
@@ -17,33 +32,28 @@ This repository represents an ongoing project that I'm actively developing as pa
 - **Runtime**: Node.js (MERN Stack)
 - **Testing**: Jest.js
 
-## 📋 Current Status
+## Author
 
-**Phase**: Design & Frontend
+This project was developed, authored, and is solely maintained by:
 
-I'm currently in the Frontend stage, carefully considering the features, design and functionality that will be implemented. This includes:
+Omar Yasser
 
-- Feature specification and requirements gathering
-- System architecture design
-- User interface mockups and wireframes
+GitHub: [here](https://github.com/Omar-Yasser-Frontend)
 
-## 🔄 Repository Updates
+LinkedIn: [Profile Here](https://www.linkedin.com/in/omar-yasser-2440aa262/)
 
-This repository will be continuously updated as the project progresses. Each development milestone will be reflected here with:
+Website: Demo(will be added once it is deployed)
 
-- New feature implementations
-- Code improvements
-- Documentation updates
-- Bug fixes and optimizations
+## Contributing
 
-## 🎯 Upcoming Features
+Contributions are welcome for improving the demo, fixing bugs, or adding accessibility improvements. Before submitting a PR, ensure:
 
-The features list is currently being finalized and will be updated as development progresses. Stay tuned for detailed feature specifications and implementation roadmap.
+You do not add real sponsor logos or claims of partnership.
+You include tests for any new logic where applicable.
 
-## 📈 Development Approach
+To contribute:
 
-This project follows an iterative development approach where features are planned, implemented, and refined in cycles. The repository serves as a living document of the development process.
-
----
-
-_This README will be updated regularly to reflect the current project status and newly implemented features._
+- Fork the repo
+- Create a feature branch
+- Make your changes
+- Open a pull request describing the change
