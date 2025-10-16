@@ -14,8 +14,8 @@ function FilterCapacity() {
   });
   const updateRoomCapParams = useSyncSearchParams(setRoomCap, "rooms[lte]");
   const updateGuestsCapParams = useSyncSearchParams(setGuestCap, "guests[lte]");
-  const roomTimeoutID = useRef<null | NodeJS.Timeout>(null);
-  const guestTimeoutID = useRef<null | NodeJS.Timeout>(null);
+  const roomTimeoutID = useRef<null | ReturnType<typeof setTimeout>>(null);
+  const guestTimeoutID = useRef<null | ReturnType<typeof setTimeout>>(null);
 
   return (
     <div>

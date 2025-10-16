@@ -22,7 +22,7 @@ function Reviews() {
           ?.flat()
           .map(({ reviews }) => reviews)
           .flat()
-          .map((review) => <ReviewCard {...review} />)}
+          .map((review) => <ReviewCard key={review._id} {...review} />)}
       {hasNextPage && (
         <PrimaryBtn onClick={() => fetchNextPage()}>Load More</PrimaryBtn>
       )}

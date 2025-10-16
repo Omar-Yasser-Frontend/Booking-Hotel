@@ -30,31 +30,37 @@ function TestimonialSliders() {
     loop: true,
     watchDrag: false,
   });
-  const intervalRef = useRef<null | NodeJS.Timeout>(null);
+  const intervalRef = useRef<null | ReturnType<typeof setTimeout>>(null);
 
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       if (emblaApi) emblaApi.scrollPrev();
     }, 7000);
     return () =>
-      clearInterval(intervalRef.current as unknown as NodeJS.Timeout);
+      clearInterval(
+        intervalRef.current as unknown as ReturnType<typeof setTimeout>,
+      );
   }, [emblaApi]);
 
   const scrollPrev = useCallback(() => {
-    clearInterval(intervalRef.current as unknown as NodeJS.Timeout);
+    clearInterval(
+      intervalRef.current as unknown as ReturnType<typeof setTimeout>,
+    );
     if (emblaApi) emblaApi.scrollPrev();
   }, [emblaApi]);
 
   const scrollNext = useCallback(() => {
-    clearInterval(intervalRef.current as unknown as NodeJS.Timeout);
+    clearInterval(
+      intervalRef.current as unknown as ReturnType<typeof setTimeout>,
+    );
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
 
   return (
     <div className="flex flex-grow justify-end gap-2 p-4">
-      <div className="embla shadow-2xl w-[450px] max-w-[80vw] h-[300px]">
-        <div className="embla__viewport overflow-hidden h-full" ref={emblaRef}>
-          <div className="embla__container flex flex-col h-full">
+      <div className="embla h-[300px] w-[450px] max-w-[80vw] shadow-2xl">
+        <div className="embla__viewport h-full overflow-hidden" ref={emblaRef}>
+          <div className="embla__container flex h-full flex-col">
             {testimonialsList.map((data, idx) => (
               <TestiMonialCard key={idx} {...data} />
             ))}

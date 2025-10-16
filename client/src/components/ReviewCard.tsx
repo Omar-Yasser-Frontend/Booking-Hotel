@@ -58,7 +58,11 @@ function ReviewCard({
           <>
             <div className="flex gap-0.5 text-yellow-500">
               {Array.from({ length: 5 }).map((_, idx) =>
-                idx + 1 <= rating ? <FaStar /> : <FaRegStar />,
+                idx + 1 <= rating ? (
+                  <FaStar key={idx} />
+                ) : (
+                  <FaRegStar key={idx} />
+                ),
               )}
             </div>
             <p>{comment}</p>

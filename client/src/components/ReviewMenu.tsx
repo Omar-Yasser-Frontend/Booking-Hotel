@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 
 function ReviewMenu({
   reviewId,
-  isEdit,
   setIsEdit,
   close,
 }: {
@@ -14,8 +13,11 @@ function ReviewMenu({
   setIsEdit: React.Dispatch<boolean>;
   close: () => void;
 }) {
-  const { mutateAsync: deleteReview } = useDeleteComment();
-  const ref = useOutsideClick(close);
+  // use a local type assertion so we can call mutateAsync with the review id
+  const { mutateAsync: deleteReview } = useDeleteComment() as unknown as {
+    mutateAsync: (id: string) => Promise<unknown>;
+  };
+  const ref = useOutsideClick(close) as React.RefObject<HTMLUListElement>;
 
   return (
     <ul

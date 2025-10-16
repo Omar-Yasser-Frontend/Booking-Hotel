@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router";
 function PriceFilter() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [price, setPrice] = useState<[number, number]>([0, 1000]);
-  const priceTimeoutID = useRef<NodeJS.Timeout | null>(null);
+  const priceTimeoutID = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const lowPrice = searchParams.get("price[gte]");

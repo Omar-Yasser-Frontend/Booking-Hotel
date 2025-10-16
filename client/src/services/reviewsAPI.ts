@@ -25,6 +25,9 @@ export async function getReviews(
   nextPage: number;
   resultLength: number;
 }> {
+  console.log(pageParam);
+  console.log(roomId);
+
   const res = await api.get(`/review/${roomId}?page=${pageParam}`);
   return res.data;
 }
