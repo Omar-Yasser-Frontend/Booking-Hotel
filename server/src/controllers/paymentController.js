@@ -65,3 +65,17 @@ export const createPaymentIntent = async (req, res) => {
     bookingData: metadata,
   });
 };
+
+export const paymentReceipte = async (req, res) => {
+  const { intentId } = req.params;
+  const paymentIntent = await stripe.paymentIntents.retrieve(intentId, {
+    expand: ["latest_charge"],
+  });
+
+  ResponseFormatter.success(res, {
+    receipte: {
+      ...paymentIntent.latest_charge.metadata,
+      url: paymentIntent.latest_charge.receipt_url,
+    },
+  });
+};

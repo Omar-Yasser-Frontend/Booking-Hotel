@@ -14,4 +14,6 @@ router.post(
   paymentController.createPaymentIntent
 );
 
+router.get("/intent/:intentId", paymentController.paymentReceipte);
+
 export default router;
