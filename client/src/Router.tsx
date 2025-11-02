@@ -22,6 +22,7 @@ import Activities from "./pages/Activities";
 import Checkout from "./pages/Checkout";
 import Wishlists from "./pages/Wishlists";
 import Disclamer from "./components/Disclamer";
+import ThanksPage from "./pages/ThanksPage";
 
 function Router() {
   const location = useLocation();
@@ -32,6 +33,7 @@ function Router() {
           <Route index element={<HomePage />} />
           <Route path="/about" element={<Disclamer />} />
           <Route path="/contact" element={<Disclamer />} />
+          <Route path="/thanks" element={<ThanksPage />} />
           <Route path="/rooms" element={<Rooms />} />
           <Route path="/rooms/:roomId" element={<RoomDetails />} />
           <Route element={<ProtectedRoutes />}>

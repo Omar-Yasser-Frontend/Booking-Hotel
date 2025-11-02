@@ -1,3 +1,4 @@
+import EmptyResult from "../../../components/EmptyResult";
 import ErrorMessage from "../../../components/ErrorMessage";
 import Loading from "../../../components/Loading";
 import { useRooms } from "../hooks/useRooms";
@@ -15,6 +16,8 @@ function RoomsList() {
     );
 
   if (isError) return <ErrorMessage message={error.message} />;
+
+  if (!data.rooms.length) return <EmptyResult>No rooms found</EmptyResult>;
 
   return (
     <>

@@ -53,7 +53,7 @@ function CheckoutForm() {
     await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${window.location.origin}/order/123/complete`,
+        return_url: `${window.location.origin}/thanks`,
       },
     });
   }

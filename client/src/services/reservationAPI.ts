@@ -52,3 +52,18 @@ export async function getReservedDates(
 
   return res.data;
 }
+
+export async function getReceipte(context: QueryFunctionContext): Promise<{
+  receipte: {
+    checkIn: string;
+    checkOut: string;
+    nightsCount: string;
+    totalPrice: string;
+    url: string;
+  };
+}> {
+  const [, intentId] = context.queryKey;
+  const res = await api.get("/payment/intent/" + intentId);
+
+  return res.data;
+}
