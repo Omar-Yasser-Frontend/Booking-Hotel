@@ -16,9 +16,10 @@ function RoomDetailsBody() {
   const room = data?.room;
 
   if (isPending) return <MainLoading />;
-  if (!room) return null;
 
   if (isError) return <ErrorMessage message={error.message} />;
+
+  if (!room) return null;
 
   return (
     <Container>
